@@ -31,7 +31,7 @@ var rooms = [
         layers: [
             { name: "Farback Walls", path: "backgrounds/ch1/cabin interior/farback interior cabin p.png", depth: 0.02 },
             { name: "Interior Table", path: "backgrounds/ch1/cabin interior/bg interior cabin p.png", depth: 0.05 },
-            { name: "Pristine Blade", path: "backgrounds/ch1/cabin interior/knife interior cabin p.png", depth: 0.08 }
+            { name: "Pristine Blade", path: "backgrounds/ch1/cabin interior/knife interior cabin p.png", depth: 0.05 }
         ]
     },
     {

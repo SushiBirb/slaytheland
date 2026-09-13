@@ -48,27 +48,33 @@ Singleton {
 
     // Shader knobs: controls Hyprland window border pencil shader
     property bool shaderEnabled: true
-    property real shaderIntensity: 1.0
+    property real shaderIntensity: 0.5
     property real vignetteIntensity: 0.0
+
+    Timer {
+        id: shaderDebounce
+        interval: 60
+        repeat: false
+        onTriggered: root.applyScreenShader()
+    }
 
     function applyScreenShader() {
         var home = Quickshell.env("HOME") || "/home/arch";
-        var shaderPath = home + "/slaytheland/hypr/shaders/pencil_border.glsl";
-        if (root.shaderEnabled) {
-            Quickshell.execDetached(["hyprctl", "keyword", "decoration:screen_shader", shaderPath]);
-        } else {
-            Quickshell.execDetached(["hyprctl", "keyword", "decoration:screen_shader", ""]);
-        }
+        var scriptPath = home + "/slaytheland/scripts/set-shader-intensity.sh";
+        var val = root.shaderEnabled ? root.shaderIntensity.toFixed(2) : "0.0";
+        Quickshell.execDetached(["bash", scriptPath, val]);
     }
 
     onShaderEnabledChanged: {
-        applyScreenShader();
+        shaderDebounce.restart();
+    }
+
+    onShaderIntensityChanged: {
+        shaderDebounce.restart();
     }
 
     Component.onCompleted: {
-        if (root.shaderEnabled) {
-            applyScreenShader();
-        }
+        applyScreenShader();
     }
 
     function updateGlobalCursor(cx, cy) {

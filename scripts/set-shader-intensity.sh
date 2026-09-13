@@ -1,3 +1,34 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# slaytheland: Dynamic Pencil Shader Intensity Controller
+# Adjusts graphite tooth and line-boil hatching for Hyprland window borders live
+# Supports both Hyprland Lua (hl.config eval) and legacy hyprctl keyword
+# ==============================================================================
+set -euo pipefail
+
+INTENSITY="${1:-0.5}"
+
+# If intensity is near zero, disable the screen shader
+IS_ZERO=$(awk -v v="$INTENSITY" 'BEGIN { print (v <= 0.02) ? "1" : "0" }')
+if [ "$IS_ZERO" = "1" ]; then
+    hyprctl eval 'hl.config({ decoration = { screen_shader = "" } })' >/dev/null 2>&1 || true
+    hyprctl keyword decoration:screen_shader "" >/dev/null 2>&1 || true
+    exit 0
+fi
+
+# Target directory in user's hypr config
+SHADER_DIR="$HOME/.config/hypr/shaders"
+mkdir -p "$SHADER_DIR"
+
+# Alternate between two filenames to guarantee Hyprland detects a config string change and recompiles instantly
+CURRENT=$(hyprctl getoption decoration:screen_shader -j 2>/dev/null | jq -r '.str' 2>/dev/null || echo "")
+if [[ "$CURRENT" == *"pencil_border_a.glsl"* ]]; then
+    TARGET="$SHADER_DIR/pencil_border_b.glsl"
+else
+    TARGET="$SHADER_DIR/pencil_border_a.glsl"
+fi
+
+cat << 'GLSLEOF' > "$TARGET"
 #version 300 es
 precision highp float;
 
@@ -43,7 +74,7 @@ void main() {
     float edgeFactor = clamp(edge * 2.0 + isBorderColor * 0.6, 0.0, 1.0);
     
     // Dynamic intensity passed from Quickshell slider
-    float u_intensity = 0.4;
+    float u_intensity = __INTENSITY__;
     
     if (edgeFactor > 0.12 && u_intensity > 0.01) {
         vec2 px = v_texcoord * res;
@@ -58,3 +89,14 @@ void main() {
         fragColor = center;
     }
 }
+GLSLEOF
+
+# Substitute intensity into shader
+sed -i "s/__INTENSITY__/$INTENSITY/g" "$TARGET"
+
+# Synchronize canonical pencil_border.glsl
+cp -f "$TARGET" "$SHADER_DIR/pencil_border.glsl"
+
+# Hot-reload in Hyprland (supports Lua and legacy .conf)
+hyprctl eval "hl.config({ decoration = { screen_shader = '$TARGET' } })" >/dev/null 2>&1 || true
+hyprctl keyword decoration:screen_shader "$TARGET" >/dev/null 2>&1 || true

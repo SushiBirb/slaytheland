@@ -79,10 +79,10 @@ for p in index:
 # Character Sprites (Princess Vessels)
 print("   -> Extracting transparent character sprites...")
 sprite_mappings = {
-    "images/_sprites/ch1/princess/princess sit idle p.png": "sprites/ch1/princess_idle.png",
-    "images/_sprites/ch1/princess/princess sit talk p.png": "sprites/ch1/princess_talk.png",
-    "images/_sprites/ch1/princess/princess sit think p.png": "sprites/ch1/princess_thinking.png",
-    "images/_sprites/ch1/princess/princess sit glare p.png": "sprites/ch1/princess_haughty.png",
+    "images/_sprites/ch1/princess distant/princess d neutral p.png": "sprites/ch1/princess_idle.png",
+    "images/_sprites/ch1/princess distant/princess d questioning talk p.png": "sprites/ch1/princess_talk.png",
+    "images/_sprites/ch1/princess distant/princess d down p.png": "sprites/ch1/princess_thinking.png",
+    "images/_sprites/ch1/princess distant/princess d haughty p.png": "sprites/ch1/princess_haughty.png",
     "images/_sprites/ch2/damsel/damsel close stare p.png": "sprites/ch2/damsel_idle.png",
     "images/_sprites/ch2/damsel/damsel close talk p.png": "sprites/ch2/damsel_talk.png",
     "images/_sprites/ch2/witch/witch free crawl p.png": "sprites/ch2/witch_idle.png",
@@ -158,9 +158,10 @@ if os.path.exists(voices_src):
         "ch2/tower/broken/ch2_broken_1.flac": "voice_broken.flac",
         "ch2/witch/opportunist/ch2_opportunist_1.flac": "voice_opportunist.flac",
         # Princess Chapter 1 & 2
-        "ch1/empty/princess/p_empty_hello.flac": "princess_hello.flac",
-        "ch1/knife/princess/knife_p_chains.flac": "princess_chains.flac",
-        "ch1/shared/princess/stairs_p_who.flac": "princess_who_there.flac",
+        "ch1/empty/princess/empty_p_1.flac": "princess_empty_1.flac",
+        "ch1/empty/princess/empty_p_10.flac": "princess_chains.flac",
+        "ch1/empty/princess/empty_p_55.flac": "princess_empty_2.flac",
+        "ch1/knife/princess/stab_p_1.flac": "princess_who_there.flac",
         "ch2/tower/princess/ch2_tp_1.flac": "princess_come_down.flac",
         "ch2/damsel/princess/ch2_dp_1.flac": "princess_damsel.flac",
         "ch2/witch/princess/ch2_wp_1.flac": "princess_witch.flac",

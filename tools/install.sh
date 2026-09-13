@@ -36,31 +36,34 @@ echo "✓ Quickshell linked: ~/.config/quickshell/slaytheland -> $ROOT/quickshel
 
 # Step 4: Install Hyprland (.lua and .conf) and Hyprlock configs
 echo ">> Installing Hyprland (.lua & legacy .conf) & Hyprlock configurations..."
-mkdir -p "$HOME/.config/hypr/shaders"
-if [ ! -f "$HOME/.config/hypr/hyprland.lua" ] || ! cmp -s "$ROOT/hypr/hyprland.lua" "$HOME/.config/hypr/hyprland.lua"; then
-    rm -f "$HOME/.config/hypr/hyprland.lua"
-    cp -f "$ROOT/hypr/hyprland.lua" "$HOME/.config/hypr/hyprland.lua"
+if [ "$(readlink -f "$ROOT/hypr")" != "$(readlink -f "$HOME/.config/hypr" 2>/dev/null || true)" ]; then
+    mkdir -p "$HOME/.config/hypr/shaders"
+    if [ ! -f "$HOME/.config/hypr/hyprland.lua" ] || ! cmp -s "$ROOT/hypr/hyprland.lua" "$HOME/.config/hypr/hyprland.lua"; then
+        rm -f "$HOME/.config/hypr/hyprland.lua"
+        cp -f "$ROOT/hypr/hyprland.lua" "$HOME/.config/hypr/hyprland.lua"
+    fi
+    if [ ! -f "$HOME/.config/hypr/hyprland.conf" ] || ! cmp -s "$ROOT/hypr/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"; then
+        rm -f "$HOME/.config/hypr/hyprland.conf"
+        cp -f "$ROOT/hypr/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
+    fi
+    if [ ! -f "$HOME/.config/hypr/hyprlock.conf" ] || ! cmp -s "$ROOT/hypr/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf"; then
+        rm -f "$HOME/.config/hypr/hyprlock.conf"
+        cp -f "$ROOT/hypr/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf"
+    fi
+    if [ -d "$ROOT/hypr/shaders" ]; then
+        cp -rf "$ROOT/hypr/shaders/"* "$HOME/.config/hypr/shaders/"
+    fi
 fi
-if [ ! -f "$HOME/.config/hypr/hyprland.conf" ] || ! cmp -s "$ROOT/hypr/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"; then
-    rm -f "$HOME/.config/hypr/hyprland.conf"
-    cp -f "$ROOT/hypr/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
-fi
-if [ ! -f "$HOME/.config/hypr/hyprlock.conf" ] || ! cmp -s "$ROOT/hypr/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf"; then
-    rm -f "$HOME/.config/hypr/hyprlock.conf"
-    cp -f "$ROOT/hypr/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf"
-fi
-if [ -d "$ROOT/hypr/shaders" ]; then
-    cp -rf "$ROOT/hypr/shaders/"* "$HOME/.config/hypr/shaders/"
-fi
-echo "✓ Hyprland (hyprland.lua + hyprland.conf), shaders & Hyprlock installed into ~/.config/hypr/"
+echo "✓ Hyprland (hyprland.lua + hyprland.conf), shaders & Hyprlock verified in ~/.config/hypr/"
 
 # Step 5: Link helper binaries to ~/.local/bin
 echo ">> Linking helper binaries into ~/.local/bin..."
 mkdir -p "$HOME/.local/bin"
 ln -sfn "$ROOT/scripts/wall-cycle.sh" "$HOME/.local/bin/slay-wall-cycle"
 ln -sfn "$ROOT/tools/doctor.sh" "$HOME/.local/bin/slay-doctor"
-chmod +x "$ROOT/scripts/wall-cycle.sh" "$ROOT/tools/doctor.sh"
-echo "✓ Helpers linked: slay-wall-cycle, slay-doctor"
+ln -sfn "$ROOT/scripts/set-shader-intensity.sh" "$HOME/.local/bin/slay-shader"
+chmod +x "$ROOT/scripts/wall-cycle.sh" "$ROOT/tools/doctor.sh" "$ROOT/scripts/set-shader-intensity.sh"
+echo "✓ Helpers linked: slay-wall-cycle, slay-doctor, slay-shader"
 
 # Step 5: Verification summary
 echo "================================================================================"

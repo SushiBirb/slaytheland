@@ -17,3 +17,5 @@ __pycache__/
 *.tmp
 vm/id_ed25519*
 dist/
+hypr/shaders/pencil_border_*.glsl
+screen_*.png

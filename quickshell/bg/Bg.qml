@@ -68,14 +68,10 @@ Item {
         }
     }
 
-    // Princess Companion (Bottom-Centered, displayed only in narrative scenes like the Basement)
+    // Princess Companion (aligned to scene perspective, displayed only in narrative scenes like the Basement)
     Princess {
         id: companion
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
-        width: Math.min(parent.width, 1000)
-        height: parent.height
+        anchors.fill: parent
 
         visible: opacity > 0.0
         opacity: (root.companionVisible && RoomState.currentRoom && RoomState.currentRoom.hasPrincess) ? 1.0 : 0.0

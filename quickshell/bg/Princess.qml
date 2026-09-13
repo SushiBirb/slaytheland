@@ -68,30 +68,28 @@ Item {
 
     Item {
         id: container
-        width: parent.width
-        height: parent.height
-        anchors.bottom: parent.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
-        transformOrigin: Item.Bottom
+        anchors.fill: parent
+        transformOrigin: Item.Center
 
-        // Gaze translation & procedural breathing
-        x: root.gazeX * -18
-        y: root.gazeY * -8
+        // Parallax locked to wall/shackles depth (depth: 0.08 -> 25.6px factor)
+        readonly property real depthFactor: 25.6
+        property real offsetX: depthFactor * RoomState.cursorX * -1.0
+        property real offsetY: (depthFactor * 0.5) * RoomState.cursorY * -1.0
+
+        x: offsetX
+        y: offsetY
         rotation: 0
         scale: root.breathScale
 
         Behavior on x { SpringAnimation { spring: 4.5; damping: 0.35; mass: 1.0; epsilon: 0.05 } }
         Behavior on y { SpringAnimation { spring: 4.5; damping: 0.35; mass: 1.0; epsilon: 0.05 } }
 
-        // Idle sprite layer - grounded firmly to bottom screen edge
+        // Idle sprite layer - exact 2100x1200 canvas crop matching room layers
         Image {
             id: idleImg
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.bottom: parent.bottom
-            width: parent.width
-            height: parent.height
-            fillMode: Image.PreserveAspectFit
-            verticalAlignment: Image.AlignBottom
+            anchors.fill: parent
+            anchors.margins: -120
+            fillMode: Image.PreserveAspectCrop
             source: Theme.asset(RoomState.currentSprite)
             asynchronous: true
             opacity: (root.talking && root.talkFrame) ? 0.0 : (root.blinking ? 0.88 : 1.0)
@@ -106,12 +104,9 @@ Item {
         // Talking sprite layer - crossfaded without rapid texture reloading
         Image {
             id: talkImg
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.bottom: parent.bottom
-            width: parent.width
-            height: parent.height
-            fillMode: Image.PreserveAspectFit
-            verticalAlignment: Image.AlignBottom
+            anchors.fill: parent
+            anchors.margins: -120
+            fillMode: Image.PreserveAspectCrop
             source: Theme.asset(RoomState.currentTalkSprite)
             asynchronous: true
             opacity: (root.talking && root.talkFrame) ? 1.0 : 0.0
@@ -125,10 +120,10 @@ Item {
 
         // Hit-box strictly constrained to princess character figure
         MouseArea {
-            width: Math.min(parent.width * 0.35, 300)
-            height: Math.min(parent.height * 0.65, 480)
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.bottom: parent.bottom
+            width: Math.min(parent.width * 0.35, 320)
+            height: Math.min(parent.height * 0.45, 380)
+            anchors.centerIn: parent
+            anchors.verticalCenterOffset: (RoomState.currentVessel && RoomState.currentVessel.chapter === 1) ? -parent.height * 0.11 : parent.height * 0.05
             hoverEnabled: true
             cursorShape: Qt.PointingHandCursor
             onClicked: {

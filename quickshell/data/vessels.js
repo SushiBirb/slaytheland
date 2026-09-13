@@ -20,7 +20,8 @@ var vessels = [
         quotes: [
             { text: "Hi! Do you think you can get me out of these chains?", audio: "audio/voices/princess_chains.flac" },
             { text: "H-hello? Is someone there?", audio: "audio/voices/princess_empty_1.flac" },
-            { text: "I'm guessing you don't have the key.", audio: "audio/voices/princess_empty_2.flac" }
+            { text: "I'm guessing you don't have the key.", audio: "audio/voices/princess_empty_2.flac" },
+            { text: "Who's there?", audio: "audio/voices/princess_who_there.flac" }
         ]
     },
     {
