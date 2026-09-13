@@ -28,7 +28,11 @@ RAM="${RAM:-4G}"
 
 EXTRA_ARGS=()
 if [ "$HEADLESS" = true ]; then
-    EXTRA_ARGS+=( -display none -serial mon:stdio )
+    if [ -t 0 ]; then
+        EXTRA_ARGS+=( -display none -serial mon:stdio )
+    else
+        EXTRA_ARGS+=( -display none -serial null )
+    fi
 else
     # GDK Wayland backend with hardware-accelerated OpenGL
     export GDK_BACKEND=wayland

@@ -29,10 +29,24 @@ fi
 # Step 3: Link quickshell config
 echo ">> Linking Quickshell configuration..."
 mkdir -p "$HOME/.config/quickshell"
+rm -f "$HOME/.config/quickshell/shell.qml" "$HOME/.config/quickshell/default"
 ln -sfn "$ROOT/quickshell" "$HOME/.config/quickshell/slaytheland"
 echo "✓ Quickshell linked: ~/.config/quickshell/slaytheland -> $ROOT/quickshell"
 
-# Step 4: Link helper binaries to ~/.local/bin
+# Step 4: Install Hyprland and Hyprlock configs
+echo ">> Installing Hyprland & Hyprlock configurations..."
+mkdir -p "$HOME/.config/hypr"
+if [ ! -f "$HOME/.config/hypr/hyprland.conf" ] || ! cmp -s "$ROOT/hypr/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"; then
+    rm -f "$HOME/.config/hypr/hyprland.conf"
+    cp -f "$ROOT/hypr/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
+fi
+if [ ! -f "$HOME/.config/hypr/hyprlock.conf" ] || ! cmp -s "$ROOT/hypr/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf"; then
+    rm -f "$HOME/.config/hypr/hyprlock.conf"
+    cp -f "$ROOT/hypr/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf"
+fi
+echo "✓ Hyprland & Hyprlock configs installed into ~/.config/hypr/"
+
+# Step 5: Link helper binaries to ~/.local/bin
 echo ">> Linking helper binaries into ~/.local/bin..."
 mkdir -p "$HOME/.local/bin"
 ln -sfn "$ROOT/scripts/wall-cycle.sh" "$HOME/.local/bin/slay-wall-cycle"
