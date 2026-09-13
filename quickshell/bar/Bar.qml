@@ -68,6 +68,7 @@ Item {
 
             // Roman Workspaces (I, II, III, IV, V)
             Row {
+                id: wsRow
                 spacing: 4
 
                 readonly property var numerals: ["I", "II", "III", "IV", "V"]
@@ -84,13 +85,13 @@ Item {
                         width: 28
                         height: 28
                         radius: Theme.radiusSmall
-                        color: isActive ? Theme.crimson : (wsMouse.containsMouse ? Theme.surfaceHover : "transparent")
-                        border.color: isActive ? Theme.crimson : Theme.graphiteMuted
+                        color: isActive ? Theme.accent : (wsMouse.containsMouse ? Theme.surfaceHover : "transparent")
+                        border.color: isActive ? Theme.accent : Theme.graphiteMuted
                         border.width: isActive ? 2 : 1
 
                         Text {
                             anchors.centerIn: parent
-                            text: wsChip.numerals[wsChip.index]
+                            text: wsRow.numerals[wsChip.index]
                             color: wsChip.isActive ? Theme.parchmentWhite : (wsMouse.containsMouse ? Theme.parchment : Theme.pencilLight)
                             font.family: Theme.fontTitle
                             font.pixelSize: 15

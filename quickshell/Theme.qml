@@ -20,6 +20,13 @@ Singleton {
     readonly property color crimsonVivid: "#e02438"      // High-priority warnings, urgent alerts
     readonly property color amber: "#d4a373"             // Candlelight warnings, CPU alert threshold
 
+    // === Dynamic Mood Accent Tokens ===
+    // Reacts dynamically to the currently manifested Princess vessel
+    property color accent: RoomState.moodColor
+    Behavior on accent { ColorAnimation { duration: 450; easing.type: Easing.OutCubic } }
+    property color accentMuted: RoomState.moodMuted
+    Behavior on accentMuted { ColorAnimation { duration: 450; easing.type: Easing.OutCubic } }
+
     // === Typography Tokens ===
     readonly property string fontTitle: "Kelmscott Roman NF"
     readonly property string fontKelmscott: "Kelmscott Roman NF"

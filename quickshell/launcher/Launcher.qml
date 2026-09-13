@@ -127,7 +127,7 @@ Item {
                 Layout.preferredHeight: 42
                 radius: Theme.radiusSmall
                 color: Theme.surfaceAlt
-                border.color: searchInput.activeFocus ? Theme.crimson : Theme.graphiteMuted
+                border.color: searchInput.activeFocus ? Theme.accent : Theme.graphiteMuted
                 border.width: searchInput.activeFocus ? 2 : 1
 
                 RowLayout {
@@ -149,7 +149,7 @@ Item {
                         font.pixelSize: 22
                         clip: true
                         selectByMouse: true
-                        selectionColor: Theme.crimson
+                        selectionColor: Theme.accent
 
                         Keys.onEscapePressed: ShellState.toggleLauncher()
                         Keys.onReturnPressed: {
@@ -179,7 +179,7 @@ Item {
                     height: 42
                     radius: Theme.radiusSmall
                     color: itemMouse.containsMouse ? Theme.surfaceHover : Theme.surfaceAlt
-                    border.color: itemMouse.containsMouse ? Theme.crimson : Theme.graphiteMuted
+                    border.color: itemMouse.containsMouse ? Theme.accent : Theme.graphiteMuted
                     border.width: itemMouse.containsMouse ? 2 : 1
 
                     RowLayout {

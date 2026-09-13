@@ -7,7 +7,7 @@ Rectangle {
     property string text: ""
     property string iconSource: ""
     property color textColor: hovered ? Theme.parchmentWhite : Theme.parchment
-    property color activeColor: Theme.crimson
+    property color activeColor: Theme.accent
     property bool active: false
     property bool isChoice: false
     property int fontSize: 20
@@ -18,9 +18,9 @@ Rectangle {
     implicitWidth: Math.max(120, label.implicitWidth + 32)
     implicitHeight: 40
 
-    color: active ? Theme.bloodDried : (hovered ? Theme.surfaceHover : Theme.surfaceAlt)
+    color: active ? Theme.accentMuted : (hovered ? Theme.surfaceHover : Theme.surfaceAlt)
     radius: Theme.radiusSmall
-    border.color: active ? Theme.crimson : (hovered ? Theme.crimson : Theme.graphiteMuted)
+    border.color: active ? root.activeColor : (hovered ? root.activeColor : Theme.graphiteMuted)
     border.width: hovered || active ? 2 : 1
 
     readonly property bool hovered: mouseArea.containsMouse

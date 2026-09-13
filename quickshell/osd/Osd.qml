@@ -102,7 +102,7 @@ Item {
                 anchors.bottom: parent.bottom
                 width: parent.width * Math.max(0, Math.min(1, root.muted ? 0 : root.value))
                 radius: 4
-                color: root.muted ? Theme.graphiteMuted : Theme.crimson
+                color: root.muted ? Theme.graphiteMuted : Theme.accent
 
                 Behavior on width { NumberAnimation { duration: 100 } }
             }

@@ -126,7 +126,7 @@ ShellRoot {
                 screen: perScreen.modelData
                 anchors.bottom: true
                 margins.bottom: 40
-                width: Math.min(840, perScreen.modelData.width - 40)
+                implicitWidth: Math.min(840, perScreen.modelData.width - 40)
                 implicitHeight: 200
                 color: "transparent"
                 WlrLayershell.layer: WlrLayer.Overlay

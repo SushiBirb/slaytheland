@@ -10,7 +10,7 @@ Item {
     property real value: 0.5
     property real from: 0.0
     property real to: 1.0
-    property color activeColor: Theme.crimson
+    property color activeColor: Theme.accent
 
     signal valueModified(real newValue)
 
@@ -68,7 +68,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 x: Math.max(0, Math.min(track.width - width, (root.value - root.from) / (root.to - root.from) * track.width - width / 2))
                 color: sliderMouse.containsMouse ? Theme.parchmentWhite : Theme.parchment
-                border.color: Theme.crimson
+                border.color: root.activeColor
                 border.width: 2
 
                 Text {

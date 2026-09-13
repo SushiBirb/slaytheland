@@ -135,7 +135,7 @@ Item {
                                 Layout.preferredWidth: chordText.implicitWidth + 14
                                 radius: 4
                                 color: Theme.voidBlack
-                                border.color: Theme.crimson
+                                border.color: Theme.accent
 
                                 Text {
                                     id: chordText

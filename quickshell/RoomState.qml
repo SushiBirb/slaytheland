@@ -14,12 +14,16 @@ Singleton {
     readonly property var currentRoom: RoomsData.rooms[roomIndex]
     readonly property var currentVessel: VesselsData.vessels[vesselIndex]
 
+    // Dynamic mood color reflecting current vessel
+    readonly property color moodColor: currentVessel && currentVessel.accentColor ? currentVessel.accentColor : "#c72c41"
+    readonly property color moodMuted: Qt.darker(moodColor, 1.3)
+
     // Cursor tracking coordinates for parallax (normalized -1.0 to 1.0)
     property real cursorX: 0.0
     property real cursorY: 0.0
 
     // Window focus freeze: When windows are focused, freeze parallax over 400ms
-    readonly property bool windowFocused: Hyprland.activeWindow !== null && Hyprland.activeWindow.address !== ""
+    readonly property bool windowFocused: Boolean(Hyprland.activeWindow && Hyprland.activeWindow.address)
     property real parallaxStrength: windowFocused ? 0.2 : 1.0
     Behavior on parallaxStrength { NumberAnimation { duration: 400; easing.type: Easing.OutQuad } }
 

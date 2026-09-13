@@ -143,6 +143,102 @@ var vessels = [
         wallpaper: "wallpapers/_apotheosis/big/apotheosis_1.jpg",
         accentColor: "#fbf5e6",
         quote: "The world is too small. We have outgrown the cage."
+    },
+    {
+        id: "stranger",
+        name: "The Stranger",
+        title: "Chapter II — The Fractured Paradox",
+        chapter: 2,
+        description: "Contradictions folded upon contradictions. Too many faces, too many memories.",
+        sprite: "backgrounds/ch2/stranger/basement/bg stranger basement p.png",
+        talkSprite: "backgrounds/ch2/stranger/basement/farback stranger basement p.png",
+        wallpaper: "wallpapers/_stranger/big/stranger_1.jpg",
+        accentColor: "#706578",
+        quote: "We are all here. Every version you chose, and every version you abandoned."
+    },
+    {
+        id: "fury",
+        name: "The Fury",
+        title: "Chapter III — Visceral Retribution",
+        chapter: 3,
+        description: "Torn sinew, exposed bone, and hatred made manifest. She will tear the cabin apart.",
+        sprite: "backgrounds/ch1/assorted/bg fury stub betrayed loom p.png",
+        talkSprite: "backgrounds/ch1/assorted/bg fury stub betrayed combat p.png",
+        wallpaper: "wallpapers/_fury/big/fury_1.jpg",
+        accentColor: "#e02438",
+        quote: "Look what you made us. There is nothing left of peace here. Only ruin."
+    },
+    {
+        id: "wraith",
+        name: "The Wraith",
+        title: "Chapter III — The Vengeful Phantom",
+        chapter: 3,
+        description: "She died in agony, and she remembers every cut. She will wear your skin.",
+        sprite: "backgrounds/ch2/spectre/basement/bg spectre basement p.png",
+        talkSprite: "backgrounds/ch2/spectre/basement/bg spectre basement alt p.png",
+        wallpaper: "wallpapers/_wraith/big/wraith_1.jpg",
+        accentColor: "#483f4d",
+        quote: "You think a blade can kill a memory? We are going to become so very close."
+    },
+    {
+        id: "den",
+        name: "The Den",
+        title: "Chapter III — The Subterranean Maw",
+        chapter: 3,
+        description: "Burrowed deep beneath the roots. An ancient predator stalking through the darkness.",
+        sprite: "backgrounds/ch1/assorted/bg beastrescuecontroldodgecrouch p.png",
+        talkSprite: "backgrounds/ch1/assorted/back beast 2 distant p.png",
+        wallpaper: "wallpapers/_den/big/den_1.jpg",
+        accentColor: "#801336",
+        quote: "*A subterranean tremor shakes the stone. The hunter waits in the dark.*"
+    },
+    {
+        id: "needle",
+        name: "The Eye of the Needle",
+        title: "Chapter III — The Immovable Titan",
+        chapter: 3,
+        description: "Chained, pierced, yet radiating overwhelming power. She laughs at your tiny blade.",
+        sprite: "backgrounds/ch2/adversary/basement/bg adversary basement p.png",
+        talkSprite: "backgrounds/ch2/adversary/basement/bg adversary basement p.png",
+        wallpaper: "wallpapers/_needle/big/needle_1.jpg",
+        accentColor: "#d4a373",
+        quote: "More chains! More blades! Come on, let's see how much blood this floor can drink!"
+    },
+    {
+        id: "grey",
+        name: "The Grey",
+        title: "Chapter III — The Drowned & Burned",
+        chapter: 3,
+        description: "Waterlogged hair, smelling of smoke and dead ash. Love curdled into tragedy.",
+        sprite: "backgrounds/ch2/damsel/basement/bg damsel basement p.png",
+        talkSprite: "backgrounds/ch2/damsel/basement/bg damsel basement p.png",
+        wallpaper: "wallpapers/_grey/big/grey_1.jpg",
+        accentColor: "#706578",
+        quote: "Why did you leave me in the dark? Did you think the fire would warm us?"
+    },
+    {
+        id: "clarity",
+        name: "The Moment of Clarity",
+        title: "Chapter III — Thousand Mask Agony",
+        chapter: 3,
+        description: "A thousand screaming masks peeling away reality. The final boundary of terror.",
+        sprite: "backgrounds/ch2/nightmare/basement/farback nightmare basement p.png",
+        talkSprite: "backgrounds/ch2/nightmare/basement/eyes nightmare p.png",
+        wallpaper: "wallpapers/_clarity/big/clarity_1.jpg",
+        accentColor: "#e02438",
+        quote: "Do you see it now? The masks never end. There was never anyone behind them."
+    },
+    {
+        id: "shifting_mound",
+        name: "The Shifting Mound",
+        title: "Finale — The Goddess of Change",
+        chapter: 4,
+        description: "Countless hands, countless vessels, weaving the fabric of dynamic reality.",
+        sprite: "backgrounds/ch2/tower/basement/bg tower basement p.png",
+        talkSprite: "backgrounds/ch2/tower/basement/bg tower basement p.png",
+        wallpaper: "wallpapers/_zfinale/big/zfinale_1.jpg",
+        accentColor: "#fbf5e6",
+        quote: "Nothing is ever truly lost. Every shape you met was a gift. Come, let us begin anew."
     }
 ];
 

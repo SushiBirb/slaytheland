@@ -66,6 +66,13 @@ Everything you experience comes directly from the visual novel: the living compa
 * **Themed Hyprlock (`hypr/hyprlock.conf`)**: Direct-to-desktop lock screen bypassing SDDM, featuring the Mirror Room, Kelmscott greeting, and pristine blade password input.
 * **SlayThePrincess XCursor Theme**: Native cursor package featuring the hand-drawn pencil arrow, pristine blade hover pointer, bloody dagger crosshair, and shifting eye progress ring.
 
+### 🎨 Dynamic Mood Color Tinting
+* Every Princess vessel features a distinctive reactive accent color (e.g. *The Tower* regal gold `#d4a373`, *The Witch* dried blood `#801336`, *The Nightmare* abyss red `#e02438`, *The Spectre* phantom mist `#706578`, *The Shifting Mound* celestial pearl `#fbf5e6`).
+* Switching vessels smoothly interpolates workspace indicators, button states, slider fills, search focus, and keycap borders across 450ms.
+
+### 🎭 Expanded 20-Vessel Manifest
+* Full support for Chapter I (*The Princess*), Chapter II (*The Damsel*, *The Witch*, *The Nightmare*, *The Tower*, *The Razor*, *The Adversary*, *The Spectre*, *The Prisoner*, *The Beast*, *The Stranger*), Chapter III (*The Thorn*, *The Apotheosis*, *The Fury*, *The Wraith*, *The Den*, *The Eye of the Needle*, *The Grey*, *The Moment of Clarity*), and Finale (*The Shifting Mound*).
+
 ---
 
 ## ⚖️ Game Ownership Requirement (The `hyprmilk` Model)
@@ -84,7 +91,7 @@ Support the creators, Abby Howard and Tony Howard-Caventi (Black Tabby Games):
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/slaytheland.git ~/Projects/slaytheland
+git clone https://github.com/SushiBirb/slaytheland.git ~/Projects/slaytheland
 cd ~/Projects/slaytheland
 ```
 
@@ -147,6 +154,17 @@ Aligned to natural muscle memory:
 # Instant 1-second rollback (resets CoW delta overlay to clean base):
 ./vm/reset-vm.sh
 ```
+
+---
+
+## 🔧 Verification & Maintenance Tooling
+
+| Tool | Purpose | Command |
+|---|---|---|
+| `tools/doctor.sh` | 12-point health checker (Compositor, Quickshell, Assets, Fonts, Cursors) | `./tools/doctor.sh` |
+| `tools/pack.sh` | Packages clean distribution tarball excluding proprietary assets | `./tools/pack.sh [version]` |
+| `tools/detect_game.sh` | Discovers Steam & GOG *Slay the Princess* installations | `./tools/detect_game.sh` |
+| `tools/extract.sh` | Local zero-copyright Ren'Py extraction pipeline | `./tools/extract.sh [rpa_path]` |
 
 ---
 
