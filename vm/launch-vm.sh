@@ -44,6 +44,11 @@ else
     )
 fi
 
+GAME_HOST_DIR="/home/scushi/.local/share/Steam/steamapps/common/Slay the Princess"
+if [ -d "$GAME_HOST_DIR" ]; then
+    EXTRA_ARGS+=( -virtfs "local,path=$GAME_HOST_DIR,mount_tag=slaygame,security_model=none,id=slaygame" )
+fi
+
 echo "========================================="
 echo " Starting slaytheland Arch Linux VM"
 echo "  - CPUs: $CPUS | RAM: $RAM"

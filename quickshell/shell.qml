@@ -95,6 +95,7 @@ ShellRoot {
                 anchors.bottom: true
                 anchors.left: true
                 anchors.right: true
+                exclusionMode: ExclusionMode.Ignore
                 WlrLayershell.layer: WlrLayer.Background
                 WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
 
@@ -127,8 +128,9 @@ ShellRoot {
                 anchors.bottom: true
                 margins.bottom: 40
                 implicitWidth: Math.min(840, perScreen.modelData.width - 40)
-                implicitHeight: 200
+                implicitHeight: 220
                 color: "transparent"
+                exclusionMode: ExclusionMode.Ignore
                 WlrLayershell.layer: WlrLayer.Overlay
                 WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
                 visible: VoiceBus.currentText !== ""
@@ -145,6 +147,7 @@ ShellRoot {
                 anchors.left: true
                 anchors.right: true
                 color: "transparent"
+                exclusionMode: ExclusionMode.Ignore
                 WlrLayershell.layer: WlrLayer.Overlay
                 WlrLayershell.keyboardFocus: perScreen.st && perScreen.st.quicksettingsOpen ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
                 visible: perScreen.st ? perScreen.st.quicksettingsOpen : false
@@ -163,6 +166,7 @@ ShellRoot {
                 anchors.left: true
                 anchors.right: true
                 color: "transparent"
+                exclusionMode: ExclusionMode.Ignore
                 WlrLayershell.layer: WlrLayer.Overlay
                 WlrLayershell.keyboardFocus: perScreen.st && perScreen.st.launcherOpen ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
                 visible: perScreen.st ? perScreen.st.launcherOpen : false
@@ -181,6 +185,7 @@ ShellRoot {
                 anchors.left: true
                 anchors.right: true
                 color: "transparent"
+                exclusionMode: ExclusionMode.Ignore
                 WlrLayershell.layer: WlrLayer.Overlay
                 WlrLayershell.keyboardFocus: perScreen.st && perScreen.st.hubOpen ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
                 visible: perScreen.st ? perScreen.st.hubOpen : false
@@ -201,6 +206,7 @@ ShellRoot {
                 implicitWidth: 380
                 implicitHeight: 500
                 color: "transparent"
+                exclusionMode: ExclusionMode.Ignore
                 WlrLayershell.layer: WlrLayer.Overlay
                 WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
                 visible: Notifs.popups.length > 0
@@ -219,6 +225,7 @@ ShellRoot {
                 implicitWidth: 260
                 implicitHeight: 110
                 color: "transparent"
+                exclusionMode: ExclusionMode.Ignore
                 WlrLayershell.layer: WlrLayer.Overlay
                 WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
 
@@ -234,6 +241,7 @@ ShellRoot {
                 anchors.left: true
                 anchors.right: true
                 color: "transparent"
+                exclusionMode: ExclusionMode.Ignore
                 WlrLayershell.layer: WlrLayer.Overlay
                 WlrLayershell.keyboardFocus: perScreen.st && perScreen.st.cheatsheetOpen ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
                 visible: perScreen.st ? perScreen.st.cheatsheetOpen : false

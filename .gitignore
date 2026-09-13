@@ -1,6 +1,7 @@
 # Slay the Princess Game Assets (Users MUST own and extract from their own game install)
 assets/
 assets/*
+quickshell/assets
 
 # VM Disk Images & Virtual Hardware
 vm/*.qcow2

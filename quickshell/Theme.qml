@@ -44,6 +44,9 @@ Singleton {
     // Resolves asset path relative to the slaytheland assets directory
     function asset(relPath) {
         if (!relPath || relPath === "") return "";
-        return Qt.resolvedUrl("../assets/" + relPath);
+        if (relPath.startsWith("file://") || relPath.startsWith("http://") || relPath.startsWith("/")) {
+            return relPath.startsWith("/") ? ("file://" + relPath) : relPath;
+        }
+        return Qt.resolvedUrl("assets/" + relPath);
     }
 }

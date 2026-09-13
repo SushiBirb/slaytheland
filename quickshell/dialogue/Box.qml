@@ -11,8 +11,9 @@ Item {
     property int charIndex: 0
     property bool isTyping: false
 
-    implicitWidth: Math.min(800, parent ? parent.width - 60 : 700)
-    implicitHeight: 180
+    implicitWidth: Math.min(840, parent ? parent.width : 840)
+    implicitHeight: 220
+    anchors.fill: parent
 
     // Synchronize with VoiceBus
     Connections {
@@ -83,44 +84,33 @@ Item {
 
     // Textbox Background Container
     Item {
-        anchors.fill: parent
+        id: textboxContainer
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        height: 170
 
-        // Main 9-slice Frame
-        Border {
+        // Authentic dark backing + vignette
+        Rectangle {
             anchors.fill: parent
-            borderMargin: 24
+            radius: 4
+            color: Qt.rgba(0.06, 0.05, 0.08, 0.88)
+            border.color: Theme.graphiteMuted
+            border.width: 1
         }
 
-        // Speaker Namebox (Top-Left)
-        Item {
-            id: nameboxContainer
-            x: 32
-            y: -18
-            width: Math.max(140, nameText.implicitWidth + 36)
-            height: 36
-            visible: root.speaker !== ""
-
-            Border {
-                anchors.fill: parent
-                borderMargin: 12
-            }
-
-            Text {
-                id: nameText
-                anchors.centerIn: parent
-                text: root.speaker
-                color: Theme.crimson
-                font.family: Theme.fontTitle
-                font.pixelSize: 18
-                font.bold: true
-            }
+        Image {
+            anchors.fill: parent
+            source: Theme.asset("gui/textbox.png")
+            fillMode: Image.Stretch
+            opacity: 0.95
         }
 
         // Dialogue Body Text
         Item {
             anchors.fill: parent
             anchors.margins: 28
-            anchors.topMargin: 24
+            anchors.topMargin: 20
 
             Text {
                 id: bodyText
@@ -130,22 +120,24 @@ Item {
                 font.family: Theme.fontBody
                 font.pixelSize: 26
                 wrapMode: Text.Wrap
-                lineHeight: 1.1
+                lineHeight: 1.15
             }
 
             // Blinking Blade / Continue Glyph
-            Text {
+            Image {
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
                 anchors.margins: 4
-                text: "🗡️"
-                font.pixelSize: 18
+                width: 22
+                height: 22
+                source: Theme.asset("gui/ctc_hero.png")
                 visible: !root.isTyping
+                fillMode: Image.PreserveAspectFit
 
                 SequentialAnimation on opacity {
                     loops: Animation.Infinite
-                    NumberAnimation { from: 0.2; to: 1.0; duration: 600 }
-                    NumberAnimation { from: 1.0; to: 0.2; duration: 600 }
+                    NumberAnimation { from: 0.3; to: 1.0; duration: 500 }
+                    NumberAnimation { from: 1.0; to: 0.3; duration: 500 }
                 }
             }
         }
@@ -154,6 +146,42 @@ Item {
             anchors.fill: parent
             cursorShape: Qt.PointingHandCursor
             onClicked: root.skipTypewriter()
+        }
+    }
+
+    // Speaker Namebox (Sits above textboxContainer, unclipped)
+    Item {
+        id: nameboxContainer
+        x: 28
+        anchors.bottom: textboxContainer.top
+        anchors.bottomMargin: -6
+        width: Math.max(160, nameText.implicitWidth + 40)
+        height: 38
+        visible: root.speaker !== ""
+
+        Rectangle {
+            anchors.fill: parent
+            radius: 3
+            color: Theme.voidBlack
+            border.color: Theme.crimson
+            border.width: 1
+        }
+
+        Image {
+            anchors.fill: parent
+            source: Theme.asset("gui/namebox.png")
+            fillMode: Image.Stretch
+            opacity: 0.9
+        }
+
+        Text {
+            id: nameText
+            anchors.centerIn: parent
+            text: root.speaker
+            color: Theme.crimson
+            font.family: Theme.fontTitle
+            font.pixelSize: 18
+            font.bold: true
         }
     }
 }

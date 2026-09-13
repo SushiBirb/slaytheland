@@ -16,6 +16,25 @@ Everything you experience comes directly from the visual novel: the living compa
 
 ---
 
+## 🖼️ Visual Tour
+
+| **The Path in the Woods** | **Ryoku-Style Quick Settings** |
+|:---:|:---:|
+| ![The Path in the Woods](docs/screenshots/screenshot.png) | ![Quick Settings Sidebar](docs/screenshots/screenshot_qs.png) |
+| *Full parallax desktop with floating status bar* | *8-tile grid, media player & narrative choices* |
+
+| **3-Pane Customization Hub** | **Visual Novel Choice Launcher** |
+|:---:|:---:|
+| ![Customization Hub](docs/screenshots/screenshot_hub.png) | ![App Launcher](docs/screenshots/screenshot_launcher.png) |
+| *Princess Sanctuary, room studio & live preview dock* | *Modal choices with fuzzy search & quick actions* |
+
+| **Authentic Dialogue Typewriter** | **Keybind Grimoire Cheatsheet** |
+|:---:|:---:|
+| ![Dialogue Box](docs/screenshots/screenshot_dialogue.png) | ![Keybind Grimoire](docs/screenshots/screenshot_cheatsheet.png) |
+| *20 char/sec typewriter, unclipped namebox & blade CTC* | *Complete cheatsheet bound to SUPER + K* |
+
+---
+
 ## ✨ Features
 
 ### 👑 Interactive Multi-Vessel Princess Companion

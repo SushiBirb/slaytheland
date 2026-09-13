@@ -28,6 +28,7 @@ fi
 
 # Step 3: Link quickshell config
 echo ">> Linking Quickshell configuration..."
+ln -sfn "$ROOT/assets" "$ROOT/quickshell/assets"
 mkdir -p "$HOME/.config/quickshell"
 rm -f "$HOME/.config/quickshell/shell.qml" "$HOME/.config/quickshell/default"
 ln -sfn "$ROOT/quickshell" "$HOME/.config/quickshell/slaytheland"
