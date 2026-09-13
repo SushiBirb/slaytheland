@@ -76,6 +76,30 @@ for p in index:
     if p.startswith("images/_gallery/") and p.endswith((".jpg", ".png")) and "big" in p:
         extract_file(p, os.path.join(DEST_DIR, p.replace("images/_gallery/", "wallpapers/")))
 
+# Character Sprites (Princess Vessels)
+print("   -> Extracting transparent character sprites...")
+sprite_mappings = {
+    "images/_sprites/ch1/princess/princess sit idle p.png": "sprites/ch1/princess_idle.png",
+    "images/_sprites/ch1/princess/princess sit talk p.png": "sprites/ch1/princess_talk.png",
+    "images/_sprites/ch1/princess/princess sit think p.png": "sprites/ch1/princess_thinking.png",
+    "images/_sprites/ch1/princess/princess sit glare p.png": "sprites/ch1/princess_haughty.png",
+    "images/_sprites/ch2/damsel/damsel close stare p.png": "sprites/ch2/damsel_idle.png",
+    "images/_sprites/ch2/damsel/damsel close talk p.png": "sprites/ch2/damsel_talk.png",
+    "images/_sprites/ch2/witch/witch free crawl p.png": "sprites/ch2/witch_idle.png",
+    "images/_sprites/ch2/nightmare/nightmare neutral p.png": "sprites/ch2/nightmare_idle.png",
+    "images/_sprites/ch2/tower/tower neutral p.png": "sprites/ch2/tower_idle.png",
+    "images/_sprites/ch2/razor/razor neutral p.png": "sprites/ch2/razor_idle.png",
+    "images/_sprites/ch2/adversary/adversary neutral p.png": "sprites/ch2/adversary_idle.png",
+    "images/_sprites/ch2/spectre/spectre neutral p.png": "sprites/ch2/spectre_idle.png",
+    "images/_sprites/ch2/spectre/spectre talk p.png": "sprites/ch2/spectre_talk.png",
+    "images/_sprites/ch2/prisoner/prisoner neutral p.png": "sprites/ch2/prisoner_idle.png",
+    "images/_sprites/ch2/prisoner/prisoner talk p.png": "sprites/ch2/prisoner_talk.png",
+    "images/_sprites/ch2/beast/beast neutral p.png": "sprites/ch2/beast_idle.png",
+    "images/_sprites/ch2/stranger/stranger neutral p.png": "sprites/ch2/stranger_idle.png"
+}
+for src, dst in sprite_mappings.items():
+    extract_file(src, os.path.join(DEST_DIR, dst))
+
 # Fonts
 print("   -> Copying game typography fonts...")
 fonts_dir = os.path.join(GAME_DIR, "gui", "fonts")
@@ -107,6 +131,46 @@ if os.path.exists(sfx_src):
         src_f = os.path.join(sfx_src, f)
         if os.path.exists(src_f):
             shutil.copy2(src_f, os.path.join(dst_audio, "sfx", f))
+
+# Spoken Voice Acting (Narrator, Voices, Princess)
+print("   -> Copying voice acting dialogue lines...")
+voices_dst = os.path.join(dst_audio, "voices")
+os.makedirs(voices_dst, exist_ok=True)
+voices_src = os.path.join(GAME_DIR, "audio", "voices")
+if os.path.exists(voices_src):
+    voice_files = {
+        # Narrator Chapter 1 & Cabin
+        "ch1/woods/narrator/woods_1.flac": "narrator_woods_1.flac",
+        "ch1/woods/narrator/woods_2.flac": "narrator_woods_2.flac",
+        "ch1/knife/narrator/knife_1.flac": "narrator_cabin_blade.flac",
+        "ch1/shared/narrator/stairs_1.flac": "narrator_basement_stairs.flac",
+        # Hero & Core Voices
+        "ch1/woods/hero/woods_hero_1.flac": "hero_hesitant.flac",
+        "ch1/knife/hero/knife_hero_1.flac": "hero_dangerous.flac",
+        "ch2/adversary/stubborn/ch2_stubborn_1.flac": "voice_stubborn.flac",
+        "ch2/beast/hunted/ch2_hunt_1.flac": "voice_hunted.flac",
+        "ch2/damsel/smitten/ch2_smitten_1.flac": "voice_smitten.flac",
+        "ch2/nightmare/paranoid/ch2_paranoid_1.flac": "voice_paranoid.flac",
+        "ch2/prisoner/skeptic/ch2_skeptic_1.flac": "voice_skeptic.flac",
+        "ch2/razor/cheated/1.flac": "voice_cheated.flac",
+        "ch2/spectre/cold/ch2_cold_1.flac": "voice_cold.flac",
+        "ch2/stranger/contrarian/bonus1.flac": "voice_contrarian.flac",
+        "ch2/tower/broken/ch2_broken_1.flac": "voice_broken.flac",
+        "ch2/witch/opportunist/ch2_opportunist_1.flac": "voice_opportunist.flac",
+        # Princess Chapter 1 & 2
+        "ch1/empty/princess/p_empty_hello.flac": "princess_hello.flac",
+        "ch1/knife/princess/knife_p_chains.flac": "princess_chains.flac",
+        "ch1/shared/princess/stairs_p_who.flac": "princess_who_there.flac",
+        "ch2/tower/princess/ch2_tp_1.flac": "princess_come_down.flac",
+        "ch2/damsel/princess/ch2_dp_1.flac": "princess_damsel.flac",
+        "ch2/witch/princess/ch2_wp_1.flac": "princess_witch.flac",
+        "ch2/nightmare/princess/ch2_np_1.flac": "princess_nightmare.flac",
+        "caught/innocent.flac": "princess_innocent.flac"
+    }
+    for rel_src, dst_name in voice_files.items():
+        s = os.path.join(voices_src, rel_src)
+        if os.path.exists(s):
+            shutil.copy2(s, os.path.join(voices_dst, dst_name))
 
 # Mark verification stamp
 with open(os.path.join(DEST_DIR, ".verified"), "w") as vf:

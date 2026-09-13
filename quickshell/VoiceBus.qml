@@ -22,34 +22,55 @@ Singleton {
         }
     }
 
-    function triggerQuote(speaker, text) {
+    function stopVoice() {
+        voiceProc.running = false;
+        root.isTalking = false;
+    }
+
+    function triggerQuote(speaker, text, audioFile) {
         root.currentSpeaker = speaker;
         root.currentText = text;
         root.isTalking = true;
         root.dialogueTriggered(speaker, text);
+
+        if (!root.voiceMuted && audioFile && audioFile !== "") {
+            voiceProc.running = false;
+            var assetUrl = Theme.asset(audioFile).toString();
+            var fullPath = assetUrl.replace(/^file:\/\//, "");
+            voiceProc.command = ["pw-play", fullPath];
+            voiceProc.running = true;
+        }
     }
 
     function triggerRandomQuote() {
         var d = DialogueData.getRandomDialogue();
         if (d) {
-            triggerQuote(d.speaker, d.text);
+            triggerQuote(d.speaker, d.text, d.audioFile);
         }
     }
 
     function triggerSpeaker(spk) {
         var d = DialogueData.getDialogueForSpeaker(spk);
         if (d) {
-            triggerQuote(d.speaker, d.text);
+            triggerQuote(d.speaker, d.text, d.audioFile);
         }
     }
 
     // System event handlers
     function onStartup() {
-        triggerQuote("The Narrator", "You're on a path in the woods, and at the end of that path is a cabin.");
+        triggerQuote(
+            "The Narrator",
+            "You're on a path in the woods, and at the end of that path is a cabin. And in the basement of that cabin is a princess.",
+            "audio/voices/narrator_woods_1.flac"
+        );
     }
 
     function onLauncherOpened() {
-        triggerQuote("Voice of the Opportunist", "Now this... this is an opportunity. Let's make sure we come out on top.");
+        triggerQuote(
+            "Voice of the Hero",
+            "Wait... are we really doing this? We don't even know who she is or what she did.",
+            "audio/voices/hero_hesitant.flac"
+        );
     }
 
     function onBatteryCritical() {
@@ -69,7 +90,11 @@ Singleton {
     }
 
     function onLockOpened() {
-        triggerQuote("The Narrator", "The interior of the cabin is clean and sparse. There's a door leading to the basement.");
+        triggerQuote(
+            "The Narrator",
+            "A pristine blade rests on the table. It's sharp, and it's your only weapon.",
+            "audio/voices/narrator_cabin_blade.flac"
+        );
     }
 
     function onShutdown() {

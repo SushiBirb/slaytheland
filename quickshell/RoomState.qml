@@ -14,23 +14,39 @@ Singleton {
     readonly property var currentRoom: RoomsData.rooms[roomIndex]
     readonly property var currentVessel: VesselsData.vessels[vesselIndex]
 
+    // Explicit reactive properties for QML bindings
+    readonly property string currentSprite: currentVessel && currentVessel.sprite ? currentVessel.sprite : ""
+    readonly property string currentTalkSprite: currentVessel && currentVessel.talkSprite ? currentVessel.talkSprite : currentSprite
+    readonly property string currentVesselName: currentVessel && currentVessel.name ? currentVessel.name : "The Princess"
+    readonly property string currentVesselQuote: currentVessel && currentVessel.quote ? currentVessel.quote : ""
+    readonly property string currentVesselAudio: currentVessel && currentVessel.audioFile ? currentVessel.audioFile : "audio/voices/princess_chains.flac"
+
     // Dynamic mood color reflecting current vessel
     readonly property color moodColor: currentVessel && currentVessel.accentColor ? currentVessel.accentColor : "#c72c41"
     readonly property color moodMuted: Qt.darker(moodColor, 1.3)
+
+    // Active cursor singleton reference ensures Cursor process is running
+    readonly property real _cursorGx: Cursor.gx
+    readonly property real _cursorGy: Cursor.gy
 
     // Cursor tracking coordinates for parallax (normalized -1.0 to 1.0)
     property real cursorX: 0.0
     property real cursorY: 0.0
 
-    // Window focus freeze: When windows are focused, freeze parallax over 400ms
-    readonly property bool windowFocused: Boolean(Hyprland.activeWindow && Hyprland.activeWindow.address)
-    property real parallaxStrength: windowFocused ? 0.2 : 1.0
-    Behavior on parallaxStrength { NumberAnimation { duration: 400; easing.type: Easing.OutQuad } }
+    property real parallaxStrength: 1.0
 
-    // Shader knobs
-    property bool shaderEnabled: true
-    property real shaderIntensity: 0.6
-    property real vignetteIntensity: 0.5
+    // Shader knobs (fullscreen shader disabled per user request)
+    property bool shaderEnabled: false
+    property real shaderIntensity: 0.0
+    property real vignetteIntensity: 0.0
+
+    function updateGlobalCursor(cx, cy) {
+        var scr = (Quickshell.screens && Quickshell.screens.length > 0) ? Quickshell.screens[0] : null;
+        var sw = scr ? scr.width : 1280.0;
+        var sh = scr ? scr.height : 800.0;
+        root.cursorX = Math.max(-1.0, Math.min(1.0, ((cx / sw) - 0.5) * 2.0));
+        root.cursorY = Math.max(-1.0, Math.min(1.0, ((cy / sh) - 0.5) * 2.0));
+    }
 
     function setRoom(id) {
         for (var i = 0; i < RoomsData.rooms.length; i++) {
@@ -43,6 +59,7 @@ Singleton {
 
     function nextRoom() {
         root.roomIndex = (root.roomIndex + 1) % RoomsData.rooms.length;
+        console.log("Room cycled to:", root.currentRoom.name);
     }
 
     function prevRoom() {
@@ -60,6 +77,7 @@ Singleton {
 
     function nextVessel() {
         root.vesselIndex = (root.vesselIndex + 1) % VesselsData.vessels.length;
+        console.log("Vessel cycled to:", root.currentVessel.name, "sprite:", root.currentVessel.sprite);
     }
 
     function prevVessel() {

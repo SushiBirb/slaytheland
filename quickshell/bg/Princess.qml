@@ -57,21 +57,31 @@ Item {
         anchors.fill: parent
         transformOrigin: Item.Bottom
 
-        // Gaze lean & procedural breathing
+        // Gaze lean & procedural breathing & subtle foreground reaction
+        x: root.gazeX * -16
+        y: root.gazeY * -8
         rotation: root.gazeX * 3.5
         scale: root.breathScale
 
+        Behavior on x { SpringAnimation { spring: 4.5; damping: 0.35; mass: 1.0; epsilon: 0.05 } }
+        Behavior on y { SpringAnimation { spring: 4.5; damping: 0.35; mass: 1.0; epsilon: 0.05 } }
         Behavior on rotation { NumberAnimation { duration: 180; easing.type: Easing.OutQuad } }
 
         Image {
             id: spriteImg
             anchors.fill: parent
+            anchors.bottom: parent.bottom
             fillMode: Image.PreserveAspectFit
             source: (root.talking && root.talkFrame)
-                    ? Theme.asset(RoomState.currentVessel.talkSprite)
-                    : Theme.asset(RoomState.currentVessel.sprite)
+                    ? Theme.asset(RoomState.currentTalkSprite)
+                    : Theme.asset(RoomState.currentSprite)
             asynchronous: true
             opacity: root.blinking ? 0.88 : 1.0
+            onStatusChanged: {
+                if (status === Image.Error) {
+                    console.log("Princess sprite error loading:", source);
+                }
+            }
         }
 
         MouseArea {
@@ -80,7 +90,11 @@ Item {
             cursorShape: Qt.PointingHandCursor
             onClicked: {
                 Sfx.playBlade();
-                VoiceBus.triggerQuote(RoomState.currentVessel.name, RoomState.currentVessel.quote);
+                VoiceBus.triggerQuote(
+                    RoomState.currentVesselName,
+                    RoomState.currentVesselQuote,
+                    RoomState.currentVesselAudio
+                );
             }
         }
     }

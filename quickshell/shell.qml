@@ -5,6 +5,7 @@ import QtQuick
 import Quickshell
 import Quickshell.Wayland
 import Quickshell.Hyprland
+import "."
 import "services"
 import "bg"
 import "bar"
@@ -52,6 +53,13 @@ ShellRoot {
         name: "princess"
         description: "Toggle the Princess companion desktop presence"
         onPressed: ShellState.toggleCompanion()
+    }
+
+    GlobalShortcut {
+        appid: "slay"
+        name: "vessel"
+        description: "Cycle the Princess vessel"
+        onPressed: RoomState.nextVessel()
     }
 
     GlobalShortcut {
@@ -133,7 +141,7 @@ ShellRoot {
                 exclusionMode: ExclusionMode.Ignore
                 WlrLayershell.layer: WlrLayer.Overlay
                 WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
-                visible: VoiceBus.currentText !== ""
+                visible: true
 
                 Box {}
             }

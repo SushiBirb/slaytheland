@@ -170,7 +170,7 @@ Item {
 
                     Text {
                         id: vesselLabel
-                        text: RoomState.currentVessel.name
+                        text: RoomState.currentVesselName
                         color: Theme.parchmentWhite
                         font.family: Theme.fontTitle
                         font.pixelSize: 14

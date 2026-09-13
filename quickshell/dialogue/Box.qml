@@ -23,12 +23,15 @@ Item {
         }
     }
 
+    property bool active: false
+
     function startTypewriter(spk, txt) {
         root.speaker = spk;
         root.fullText = txt;
         root.displayedText = "";
         root.charIndex = 0;
         root.isTyping = true;
+        root.active = true;
         autoDismissTimer.stop();
         typeTimer.restart();
     }
@@ -49,8 +52,9 @@ Item {
         typeTimer.stop();
         autoDismissTimer.stop();
         root.isTyping = false;
+        root.active = false;
         VoiceBus.isTalking = false;
-        root.opacity = 0.0;
+        VoiceBus.currentText = "";
     }
 
     // 20 chars/sec typewriter timer = 50ms per character
@@ -79,7 +83,8 @@ Item {
         onTriggered: root.dismiss()
     }
 
-    opacity: root.fullText !== "" ? 1.0 : 0.0
+    opacity: root.active ? 1.0 : 0.0
+    visible: opacity > 0.0
     Behavior on opacity { NumberAnimation { duration: 250 } }
 
     // Textbox Background Container

@@ -6,11 +6,12 @@ var vessels = [
         title: "Chapter I — The Chained Maiden",
         chapter: 1,
         description: "She is chained to the wall in the basement. She wants you to free her.",
-        sprite: "backgrounds/ch1/basement/bg princess cut p.png",
-        talkSprite: "backgrounds/ch1/basement/bg princess gnaw p.png",
+        sprite: "sprites/ch1/princess_idle.png",
+        talkSprite: "sprites/ch1/princess_talk.png",
         wallpaper: "wallpapers/_zch1/big/zch1_1.jpg",
         accentColor: "#c72c41",
-        quote: "Are you here to kill me? Or did you bring something to cut these chains?"
+        quote: "Hi! Do you think you can get me out of these chains?",
+        audioFile: "audio/voices/princess_chains.flac"
     },
     {
         id: "damsel",
@@ -18,11 +19,12 @@ var vessels = [
         title: "Chapter II — Pure & Devoted",
         chapter: 2,
         description: "Pure, sweet, and eager to please. She smiles warmly at your approach.",
-        sprite: "backgrounds/ch2/damsel/basement/bg damsel basement p.png",
-        talkSprite: "backgrounds/ch2/damsel/basement/bg damsel basement p.png",
+        sprite: "sprites/ch2/damsel_idle.png",
+        talkSprite: "sprites/ch2/damsel_talk.png",
         wallpaper: "wallpapers/_damsel/big/damsel_1.jpg",
         accentColor: "#e8ddc5",
-        quote: "Oh! You came back! I knew you would. What should we do now?"
+        quote: "H-hello? Is someone there?",
+        audioFile: "audio/voices/princess_hello.flac"
     },
     {
         id: "witch",
@@ -30,11 +32,12 @@ var vessels = [
         title: "Chapter II — The Feral Trickster",
         chapter: 2,
         description: "Leaves in her hair, mud on her face, and venom in her eyes.",
-        sprite: "backgrounds/ch2/witch/basement/bg witch basement 1 p.png",
-        talkSprite: "backgrounds/ch2/witch/basement/bg witch basement 2 p.png",
+        sprite: "sprites/ch2/witch_idle.png",
+        talkSprite: "sprites/ch2/witch_idle.png",
         wallpaper: "wallpapers/_witch/big/witch_1.jpg",
         accentColor: "#801336",
-        quote: "You think you're clever, don't you? Come closer. See what happens."
+        quote: "Who's there?",
+        audioFile: "audio/voices/princess_who_there.flac"
     },
     {
         id: "nightmare",
@@ -42,83 +45,103 @@ var vessels = [
         title: "Chapter II — The Masked Terror",
         chapter: 2,
         description: "A bone mask hiding an abyss. Tendrils of shadow coil around her.",
-        sprite: "backgrounds/ch2/nightmare/basement/farback nightmare basement p.png",
-        talkSprite: "backgrounds/ch2/nightmare/basement/eyes nightmare p.png",
+        sprite: "sprites/ch2/nightmare_idle.png",
+        talkSprite: "sprites/ch2/nightmare_idle.png",
         wallpaper: "wallpapers/_nightmare/big/nightmare_1.jpg",
         accentColor: "#e02438",
-        quote: "Can you feel your heart beating? It's so loud... so fragile."
+        quote: "I don't want to hurt anyone. I like the world! I think.",
+        audioFile: "audio/voices/princess_innocent.flac"
     },
     {
         id: "tower",
         name: "The Tower",
         title: "Chapter II — The Regal Monarch",
         chapter: 2,
-        description: "She looms above you, commanding, divine, and unyielding.",
-        sprite: "backgrounds/ch2/tower/basement/bg tower basement p.png",
-        talkSprite: "backgrounds/ch2/tower/basement/bg tower basement p.png",
+        description: "Colossal, divine, and demanding of your complete submission.",
+        sprite: "sprites/ch2/tower_idle.png",
+        talkSprite: "sprites/ch2/tower_idle.png",
         wallpaper: "wallpapers/_tower/big/tower_1.jpg",
         accentColor: "#d4a373",
-        quote: "Kneel. It is the only sensible thing left for you to do."
+        quote: "Don't be a stranger. It's been so long since I've had any visitors, come on down.",
+        audioFile: "audio/voices/princess_come_down.flac"
     },
     {
         id: "razor",
         name: "The Razor",
         title: "Chapter II — The Living Weapon",
         chapter: 2,
-        description: "Blades upon blades, folded into human guise. A grin sharp enough to bleed.",
-        sprite: "backgrounds/ch2/razor/basement/bg razor basement p.png",
-        talkSprite: "backgrounds/ch2/razor/basement/bg razor basement p.png",
+        description: "Made of gleaming blades and infinite cutting edges.",
+        sprite: "sprites/ch2/razor_idle.png",
+        talkSprite: "sprites/ch2/razor_idle.png",
         wallpaper: "wallpapers/_razor/big/razor_1.jpg",
-        accentColor: "#c72c41",
-        quote: "Did you miss me? Let's dance until someone breaks."
+        accentColor: "#e63946",
+        quote: "Who's there?",
+        audioFile: "audio/voices/princess_who_there.flac"
     },
     {
         id: "adversary",
         name: "The Adversary",
         title: "Chapter II — The Blood Duelist",
         chapter: 2,
-        description: "Muscular, scarred, and exhilarated by violence. She lives for the clash.",
-        sprite: "backgrounds/ch2/adversary/basement/bg adversary basement p.png",
-        talkSprite: "backgrounds/ch2/adversary/basement/bg adversary basement p.png",
+        description: "Towering, muscular, and exhilarated by the thrill of eternal combat.",
+        sprite: "sprites/ch2/adversary_idle.png",
+        talkSprite: "sprites/ch2/adversary_idle.png",
         wallpaper: "wallpapers/_adversary/big/adversary_1.jpg",
-        accentColor: "#801336",
-        quote: "YES! Get back up! Show me what you're made of!"
+        accentColor: "#9b2226",
+        quote: "Don't be a stranger. It's been so long since I've had any visitors, come on down.",
+        audioFile: "audio/voices/princess_come_down.flac"
     },
     {
         id: "spectre",
         name: "The Spectre",
         title: "Chapter II — The Grieving Ghost",
         chapter: 2,
-        description: "A translucent spirit, cold and sorrowful, drifting between realms.",
-        sprite: "backgrounds/ch2/spectre/basement/bg spectre basement p.png",
-        talkSprite: "backgrounds/ch2/spectre/basement/bg spectre basement alt p.png",
+        description: "Ethereal, wounded, and bound to the corpse of your previous encounter.",
+        sprite: "sprites/ch2/spectre_idle.png",
+        talkSprite: "sprites/ch2/spectre_talk.png",
         wallpaper: "wallpapers/_spectre/big/spectre_1.jpg",
         accentColor: "#706578",
-        quote: "You killed me... yet here we are together. In the cold."
+        quote: "H-hello? Is someone there?",
+        audioFile: "audio/voices/princess_hello.flac"
     },
     {
         id: "prisoner",
         name: "The Prisoner",
         title: "Chapter II — The Severed Mind",
         chapter: 2,
-        description: "Quiet, analytical, and patient. She has already weighed every outcome.",
-        sprite: "backgrounds/ch2/prisoner/basement/bg prisoner basement p.png",
-        talkSprite: "backgrounds/ch2/prisoner/basement/bg prisoner basement p.png",
+        description: "Cold, calculating, and holding an iron chain in her hands.",
+        sprite: "sprites/ch2/prisoner_idle.png",
+        talkSprite: "sprites/ch2/prisoner_talk.png",
         wallpaper: "wallpapers/_prisoner/big/prisoner_1.jpg",
         accentColor: "#483f4d",
-        quote: "Hand me the blade. We both know what needs to be done."
+        quote: "Hi! Do you think you can get me out of these chains?",
+        audioFile: "audio/voices/princess_chains.flac"
     },
     {
         id: "beast",
         name: "The Beast",
         title: "Chapter II — The Feral Stalker",
         chapter: 2,
-        description: "Coiled muscles, sharp teeth, and predator eyes watching from the dark.",
-        sprite: "backgrounds/ch1/assorted/bg beastrescuecontroldodgecrouch p.png",
-        talkSprite: "backgrounds/ch1/assorted/back beast 2 distant p.png",
+        description: "Predatory, swift, and prowling in the darkness of the basement.",
+        sprite: "sprites/ch2/beast_idle.png",
+        talkSprite: "sprites/ch2/beast_idle.png",
         wallpaper: "wallpapers/_beast/big/beast_1.jpg",
-        accentColor: "#c72c41",
-        quote: "*A low, rumbling growl vibrates the floor under your feet.*"
+        accentColor: "#bb3e03",
+        quote: "Who's there?",
+        audioFile: "audio/voices/princess_who_there.flac"
+    },
+    {
+        id: "stranger",
+        name: "The Stranger",
+        title: "Chapter II — The Fractured Paradox",
+        chapter: 2,
+        description: "A shifting multiplicity of all possible Princesses at once.",
+        sprite: "sprites/ch2/stranger_idle.png",
+        talkSprite: "sprites/ch2/stranger_idle.png",
+        wallpaper: "wallpapers/_stranger/big/stranger_1.jpg",
+        accentColor: "#9381ff",
+        quote: "Don't be a stranger. It's been so long since I've had any visitors, come on down.",
+        audioFile: "audio/voices/princess_come_down.flac"
     },
     {
         id: "thorn",

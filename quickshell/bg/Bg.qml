@@ -45,18 +45,20 @@ Item {
 
                 anchors.fill: parent
 
-                // Depth offset calculated from mouse gaze
-                property real offsetX: (modelData.depth || 0.05) * RoomState.cursorX * RoomState.parallaxStrength * 50
-                property real offsetY: (modelData.depth || 0.05) * RoomState.cursorY * RoomState.parallaxStrength * 30
+                // Depth offset calculated from mouse gaze (moves opposite to cursor)
+                // Layer 0 is deep background (subtle shift), subsequent layers shift progressively more for 2.5D depth
+                readonly property real depthFactor: modelData.depth ? (modelData.depth * 320.0) : ((index + 1) * 22.0)
+                property real offsetX: depthFactor * RoomState.cursorX * -1.0
+                property real offsetY: (depthFactor * 0.5) * RoomState.cursorY * -1.0
 
                 x: offsetX
                 y: offsetY
-                Behavior on x { NumberAnimation { duration: 150; easing.type: Easing.OutQuad } }
-                Behavior on y { NumberAnimation { duration: 150; easing.type: Easing.OutQuad } }
+                Behavior on x { SpringAnimation { spring: 4.5; damping: 0.35; mass: 1.0; epsilon: 0.05 } }
+                Behavior on y { SpringAnimation { spring: 4.5; damping: 0.35; mass: 1.0; epsilon: 0.05 } }
 
                 Image {
                     anchors.fill: parent
-                    anchors.margins: -40 // Extra bleed for parallax motion
+                    anchors.margins: -70 // Bleed for smooth parallax motion without edges
                     source: Theme.asset(layerItem.modelData.path)
                     fillMode: Image.PreserveAspectCrop
                     asynchronous: true
@@ -70,40 +72,13 @@ Item {
         id: companion
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 30
+        anchors.bottomMargin: 0
+        width: Math.min(parent.width, 950)
+        height: Math.min(parent.height * 0.90, 780)
 
         visible: opacity > 0.0
         opacity: root.companionVisible ? 1.0 : 0.0
-        y: root.companionVisible ? 0 : 60
 
         Behavior on opacity { NumberAnimation { duration: 350; easing.type: Easing.InOutQuad } }
-        Behavior on y { NumberAnimation { duration: 350; easing.type: Easing.OutBack } }
-    }
-
-    // Living-Pencil Boil GLSL Shader
-    ShaderEffect {
-        id: boilShader
-        anchors.fill: parent
-        visible: RoomState.shaderEnabled
-
-        property variant source: ShaderEffectSource {
-            sourceItem: sceneContainer
-            live: true
-            hideSource: false
-        }
-
-        property real time: 0.0
-        property real intensity: RoomState.shaderIntensity
-        property real vignette: RoomState.vignetteIntensity
-        property vector2d resolution: Qt.vector2d(root.width, root.height)
-
-        fragmentShader: Qt.resolvedUrl("../shaders/pencil_boil.frag.qsb")
-
-        Timer {
-            interval: 16
-            running: boilShader.visible
-            repeat: true
-            onTriggered: boilShader.time += 0.016
-        }
     }
 }
