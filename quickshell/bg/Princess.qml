@@ -54,18 +54,20 @@ Item {
 
     Item {
         id: container
-        anchors.fill: parent
+        width: parent.width
+        height: parent.height
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
         transformOrigin: Item.Bottom
 
-        // Gaze lean & procedural breathing & subtle foreground reaction
-        x: root.gazeX * -16
+        // Gaze translation & procedural breathing
+        x: root.gazeX * -18
         y: root.gazeY * -8
-        rotation: root.gazeX * 3.5
+        rotation: 0
         scale: root.breathScale
 
         Behavior on x { SpringAnimation { spring: 4.5; damping: 0.35; mass: 1.0; epsilon: 0.05 } }
         Behavior on y { SpringAnimation { spring: 4.5; damping: 0.35; mass: 1.0; epsilon: 0.05 } }
-        Behavior on rotation { NumberAnimation { duration: 180; easing.type: Easing.OutQuad } }
 
         Image {
             id: spriteImg
@@ -84,8 +86,12 @@ Item {
             }
         }
 
+        // Hit-box strictly constrained to princess character figure
         MouseArea {
-            anchors.fill: parent
+            width: Math.min(parent.width * 0.35, 300)
+            height: Math.min(parent.height * 0.65, 480)
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: parent.bottom
             hoverEnabled: true
             cursorShape: Qt.PointingHandCursor
             onClicked: {

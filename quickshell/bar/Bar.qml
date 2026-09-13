@@ -48,10 +48,12 @@ Item {
                 color: bladeMouse.containsMouse ? Theme.bloodDried : Theme.surfaceAlt
                 border.color: bladeMouse.containsMouse ? Theme.crimson : Theme.graphiteMuted
 
-                Text {
+                GlyphIcon {
                     anchors.centerIn: parent
-                    text: "🗡️"
-                    font.pixelSize: 16
+                    width: 16
+                    height: 16
+                    name: "blade"
+                    color: bladeMouse.containsMouse ? Theme.crimsonVivid : Theme.parchment
                 }
 
                 MouseArea {
@@ -162,9 +164,11 @@ Item {
                     anchors.centerIn: parent
                     spacing: 6
 
-                    Text {
-                        text: "👑"
-                        font.pixelSize: 13
+                    GlyphIcon {
+                        width: 14
+                        height: 14
+                        name: "crown"
+                        color: Theme.parchmentWhite
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
@@ -198,10 +202,12 @@ Item {
                 color: VoiceBus.voiceMuted ? Theme.bloodDried : Theme.surfaceAlt
                 border.color: Theme.graphiteMuted
 
-                Text {
+                GlyphIcon {
                     anchors.centerIn: parent
-                    text: VoiceBus.voiceMuted ? "🔇" : "🎙️"
-                    font.pixelSize: 14
+                    width: 15
+                    height: 15
+                    name: VoiceBus.voiceMuted ? "mic-off" : "mic"
+                    color: VoiceBus.voiceMuted ? Theme.crimsonVivid : Theme.parchment
                 }
 
                 MouseArea {
@@ -226,9 +232,11 @@ Item {
                     anchors.centerIn: parent
                     spacing: 4
 
-                    Text {
-                        text: Audio.muted ? "🔇" : "🗡️"
-                        font.pixelSize: 13
+                    GlyphIcon {
+                        width: 14
+                        height: 14
+                        name: Audio.muted ? "speaker-off" : "speaker"
+                        color: Audio.muted ? Theme.crimsonVivid : Theme.parchment
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
@@ -272,9 +280,11 @@ Item {
                     anchors.centerIn: parent
                     spacing: 4
 
-                    Text {
-                        text: Battery.charging ? "⚡" : "🔋"
-                        font.pixelSize: 13
+                    GlyphIcon {
+                        width: 14
+                        height: 14
+                        name: Battery.charging ? "bolt" : "battery"
+                        color: Battery.low ? Theme.crimsonVivid : Theme.parchment
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
@@ -322,10 +332,12 @@ Item {
                 color: qsMouse.containsMouse ? Theme.surfaceHover : Theme.surfaceAlt
                 border.color: qsMouse.containsMouse ? Theme.crimson : Theme.graphiteMuted
 
-                Text {
+                GlyphIcon {
                     anchors.centerIn: parent
-                    text: "⚙️"
-                    font.pixelSize: 15
+                    width: 16
+                    height: 16
+                    name: "settings"
+                    color: qsMouse.containsMouse ? Theme.crimsonVivid : Theme.parchment
                 }
 
                 MouseArea {

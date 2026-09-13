@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import ".."
+import "../widgets"
 
 Item {
     id: root
@@ -24,12 +25,24 @@ Item {
         RowLayout {
             width: parent.width
 
-            Text {
-                text: root.icon !== "" ? (root.icon + " " + root.label) : root.label
-                color: Theme.parchment
-                font.family: Theme.fontBody
-                font.pixelSize: 20
-                font.bold: true
+            Row {
+                spacing: 6
+                GlyphIcon {
+                    visible: root.icon !== ""
+                    width: 16
+                    height: 16
+                    name: root.icon
+                    color: Theme.parchment
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Text {
+                    text: root.label
+                    color: Theme.parchment
+                    font.family: Theme.fontBody
+                    font.pixelSize: 20
+                    font.bold: true
+                    anchors.verticalCenter: parent.verticalCenter
+                }
             }
 
             Item { Layout.fillWidth: true }
@@ -71,10 +84,12 @@ Item {
                 border.color: root.activeColor
                 border.width: 2
 
-                Text {
+                GlyphIcon {
                     anchors.centerIn: parent
-                    text: "🗡️"
-                    font.pixelSize: 10
+                    width: 10
+                    height: 10
+                    name: "blade"
+                    color: Theme.voidBlack
                 }
             }
 

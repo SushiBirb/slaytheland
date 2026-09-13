@@ -43,7 +43,8 @@ Item {
                 required property var modelData
                 required property int index
 
-                anchors.fill: parent
+                width: parent.width
+                height: parent.height
 
                 // Depth offset calculated from mouse gaze (moves opposite to cursor)
                 // Layer 0 is deep background (subtle shift), subsequent layers shift progressively more for 2.5D depth
@@ -58,7 +59,7 @@ Item {
 
                 Image {
                     anchors.fill: parent
-                    anchors.margins: -70 // Bleed for smooth parallax motion without edges
+                    anchors.margins: -120 // Bleed for smooth parallax motion without edges
                     source: Theme.asset(layerItem.modelData.path)
                     fillMode: Image.PreserveAspectCrop
                     asynchronous: true

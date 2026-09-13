@@ -81,7 +81,12 @@ Item {
                     RowLayout {
                         Layout.fillWidth: true
                         spacing: 8
-                        Text { text: "🗡️"; font.pixelSize: 20 }
+                        GlyphIcon {
+                            width: 20
+                            height: 20
+                            name: "blade"
+                            color: Theme.crimsonVivid
+                        }
                         Column {
                             Layout.fillWidth: true
                             Text {
@@ -529,7 +534,7 @@ Item {
                                 SlaySlider {
                                     width: parent.width
                                     label: "Pencil Line Boil Intensity"
-                                    icon: "✏️"
+                                    icon: "pencil"
                                     value: RoomState.shaderIntensity
                                     from: 0.0
                                     to: 1.0
@@ -539,7 +544,7 @@ Item {
                                 SlaySlider {
                                     width: parent.width
                                     label: "Vignette Darkening"
-                                    icon: "🌑"
+                                    icon: "moon"
                                     value: RoomState.vignetteIntensity
                                     from: 0.0
                                     to: 1.0
@@ -575,7 +580,7 @@ Item {
                                 SlaySlider {
                                     width: parent.width
                                     label: "Master Output Volume (PipeWire)"
-                                    icon: "🗡️"
+                                    icon: "speaker"
                                     value: Audio.volume
                                     from: 0.0
                                     to: 1.0
@@ -585,7 +590,7 @@ Item {
                                 SlaySlider {
                                     width: parent.width
                                     label: "Microphone Input Volume"
-                                    icon: "🎙️"
+                                    icon: "mic"
                                     value: Audio.inputVolume
                                     from: 0.0
                                     to: 1.0

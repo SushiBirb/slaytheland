@@ -26,7 +26,7 @@ var dialogues = [
     },
     {
         speaker: "Voice of the Hero",
-        text: "Wait... are we really doing this? We don't even know who she is or what she did.",
+        text: "Good. What we're being asked to do here is wrong. Better to wash our hands of this whole situation than to take part in it.",
         tone: "hesitant",
         audioFile: "audio/voices/hero_hesitant.flac"
     },

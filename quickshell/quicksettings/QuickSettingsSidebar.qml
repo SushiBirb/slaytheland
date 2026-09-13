@@ -99,9 +99,12 @@ Item {
                                 id: batteryRow
                                 anchors.centerIn: parent
                                 spacing: 3
-                                Text {
-                                    text: Battery.charging ? "⚡" : "🔋"
-                                    font.pixelSize: 10
+                                GlyphIcon {
+                                    width: 10
+                                    height: 10
+                                    name: Battery.charging ? "bolt" : "battery"
+                                    color: Battery.low ? Theme.crimsonVivid : Theme.parchment
+                                    anchors.verticalCenter: parent.verticalCenter
                                 }
                                 Text {
                                     text: Battery.pct + "%"
@@ -233,7 +236,7 @@ Item {
                     SlaySlider {
                         width: parent.width
                         label: "Master Audio"
-                        icon: "🗡️"
+                        icon: "speaker"
                         value: Audio.volume
                         from: 0.0
                         to: 1.0
@@ -243,7 +246,7 @@ Item {
                     SlaySlider {
                         width: parent.width
                         label: "Microphone"
-                        icon: "🎙️"
+                        icon: "mic"
                         value: Audio.inputVolume
                         from: 0.0
                         to: 1.0
@@ -276,10 +279,12 @@ Item {
                                 color: Theme.voidBlack
                                 border.color: Theme.graphiteMuted
 
-                                Text {
+                                GlyphIcon {
                                     anchors.centerIn: parent
-                                    text: "🎵"
-                                    font.pixelSize: 22
+                                    width: 22
+                                    height: 22
+                                    name: "music"
+                                    color: Theme.parchment
                                 }
                             }
 
@@ -317,11 +322,12 @@ Item {
                                     color: Theme.surfaceHover
                                     border.color: Theme.graphiteMuted
 
-                                    Text {
+                                    GlyphIcon {
                                         anchors.centerIn: parent
-                                        text: "⏮"
+                                        width: 12
+                                        height: 12
+                                        name: "prev"
                                         color: Theme.parchment
-                                        font.pixelSize: 12
                                     }
                                     MouseArea {
                                         anchors.fill: parent
@@ -337,11 +343,12 @@ Item {
                                     color: Theme.accentMuted
                                     border.color: Theme.accent
 
-                                    Text {
+                                    GlyphIcon {
                                         anchors.centerIn: parent
-                                        text: Music.isPlaying ? "⏸" : "▶"
+                                        width: 12
+                                        height: 12
+                                        name: Music.isPlaying ? "pause" : "play"
                                         color: Theme.parchmentWhite
-                                        font.pixelSize: 13
                                     }
                                     MouseArea {
                                         anchors.fill: parent
@@ -357,11 +364,12 @@ Item {
                                     color: Theme.surfaceHover
                                     border.color: Theme.graphiteMuted
 
-                                    Text {
+                                    GlyphIcon {
                                         anchors.centerIn: parent
-                                        text: "⏭"
+                                        width: 12
+                                        height: 12
+                                        name: "next"
                                         color: Theme.parchment
-                                        font.pixelSize: 12
                                     }
                                     MouseArea {
                                         anchors.fill: parent
@@ -411,7 +419,12 @@ Item {
                             anchors.margins: 10
                             spacing: 8
 
-                            Text { text: "👑"; font.pixelSize: 16 }
+                            GlyphIcon {
+                                width: 16
+                                height: 16
+                                name: "crown"
+                                color: Theme.parchmentWhite
+                            }
                             Column {
                                 Layout.fillWidth: true
                                 Text {
@@ -458,7 +471,12 @@ Item {
                             anchors.margins: 10
                             spacing: 8
 
-                            Text { text: "🌲"; font.pixelSize: 16 }
+                            GlyphIcon {
+                                width: 16
+                                height: 16
+                                name: "tree"
+                                color: Theme.parchmentWhite
+                            }
                             Column {
                                 Layout.fillWidth: true
                                 Text {
@@ -505,7 +523,7 @@ Item {
                     SlaySlider {
                         width: parent.width
                         label: "Boil Intensity"
-                        icon: "✏️"
+                        icon: "pencil"
                         value: RoomState.shaderIntensity
                         from: 0.0
                         to: 1.0
@@ -515,7 +533,7 @@ Item {
                     SlaySlider {
                         width: parent.width
                         label: "Vignette Darkening"
-                        icon: "🌑"
+                        icon: "moon"
                         value: RoomState.vignetteIntensity
                         from: 0.0
                         to: 1.0

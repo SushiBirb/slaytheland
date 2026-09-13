@@ -68,7 +68,7 @@ Singleton {
     function onLauncherOpened() {
         triggerQuote(
             "Voice of the Hero",
-            "Wait... are we really doing this? We don't even know who she is or what she did.",
+            "Good. What we're being asked to do here is wrong. Better to wash our hands of this whole situation than to take part in it.",
             "audio/voices/hero_hesitant.flac"
         );
     }

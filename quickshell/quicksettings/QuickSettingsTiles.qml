@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import ".."
 import "../services"
+import "../widgets"
 
 Item {
     id: root
@@ -34,7 +35,12 @@ Item {
                 anchors.margins: 8
                 spacing: 8
 
-                Text { text: "📶"; font.pixelSize: 16 }
+                GlyphIcon {
+                    width: 18
+                    height: 18
+                    name: "wifi"
+                    color: root.wifiEnabled ? Theme.parchmentWhite : Theme.pencilLight
+                }
                 Column {
                     Layout.fillWidth: true
                     spacing: 1
@@ -66,7 +72,12 @@ Item {
                 anchors.margins: 8
                 spacing: 8
 
-                Text { text: "ᛒ"; font.pixelSize: 16 }
+                GlyphIcon {
+                    width: 18
+                    height: 18
+                    name: "bluetooth"
+                    color: root.btEnabled ? Theme.parchmentWhite : Theme.pencilLight
+                }
                 Column {
                     Layout.fillWidth: true
                     spacing: 1
@@ -99,7 +110,12 @@ Item {
                 anchors.margins: 8
                 spacing: 8
 
-                Text { text: "👑"; font.pixelSize: 16 }
+                GlyphIcon {
+                    width: 18
+                    height: 18
+                    name: "crown"
+                    color: Theme.parchmentWhite
+                }
                 Column {
                     Layout.fillWidth: true
                     spacing: 1
@@ -131,7 +147,12 @@ Item {
                 anchors.margins: 8
                 spacing: 8
 
-                Text { text: VoiceBus.voiceMuted ? "🔇" : "🎙️"; font.pixelSize: 16 }
+                GlyphIcon {
+                    width: 18
+                    height: 18
+                    name: VoiceBus.voiceMuted ? "mic-off" : "mic"
+                    color: VoiceBus.voiceMuted ? Theme.crimsonVivid : Theme.parchmentWhite
+                }
                 Column {
                     Layout.fillWidth: true
                     spacing: 1
@@ -163,7 +184,12 @@ Item {
                 anchors.margins: 8
                 spacing: 8
 
-                Text { text: "🕯️"; font.pixelSize: 16 }
+                GlyphIcon {
+                    width: 18
+                    height: 18
+                    name: "candle"
+                    color: root.nightLightEnabled ? Theme.amber : Theme.pencilLight
+                }
                 Column {
                     Layout.fillWidth: true
                     spacing: 1
@@ -195,7 +221,12 @@ Item {
                 anchors.margins: 8
                 spacing: 8
 
-                Text { text: "🌙"; font.pixelSize: 16 }
+                GlyphIcon {
+                    width: 18
+                    height: 18
+                    name: "moon"
+                    color: Notifs.dnd ? Theme.crimsonVivid : Theme.pencilLight
+                }
                 Column {
                     Layout.fillWidth: true
                     spacing: 1
@@ -227,7 +258,12 @@ Item {
                 anchors.margins: 8
                 spacing: 8
 
-                Text { text: "☕"; font.pixelSize: 16 }
+                GlyphIcon {
+                    width: 18
+                    height: 18
+                    name: "coffee"
+                    color: root.keepAwakeEnabled ? Theme.parchmentWhite : Theme.pencilLight
+                }
                 Column {
                     Layout.fillWidth: true
                     spacing: 1
@@ -259,7 +295,12 @@ Item {
                 anchors.margins: 8
                 spacing: 8
 
-                Text { text: "✏️"; font.pixelSize: 16 }
+                GlyphIcon {
+                    width: 18
+                    height: 18
+                    name: "pencil"
+                    color: RoomState.shaderEnabled ? Theme.parchmentWhite : Theme.pencilLight
+                }
                 Column {
                     Layout.fillWidth: true
                     spacing: 1
