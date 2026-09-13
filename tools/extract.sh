@@ -6,7 +6,21 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-CUSTOM_PATH="${1:-}"
+CUSTOM_ARG="${1:-}"
+FORCE=0
+CUSTOM_PATH=""
+
+if [ "$CUSTOM_ARG" = "--force" ]; then
+    FORCE=1
+elif [ -n "$CUSTOM_ARG" ]; then
+    CUSTOM_PATH="$CUSTOM_ARG"
+fi
+
+if { [ -f "$ROOT/assets/.verified" ] || [ -f "$ROOT/assets/gui/textbox.png" ]; } && [ "$FORCE" -eq 0 ] && [ -z "$CUSTOM_PATH" ]; then
+    echo ">> Authentic assets already extracted and present in assets/."
+    echo "   (Pass --force to re-extract from game archive)."
+    exit 0
+fi
 
 # 1. Detect and verify authentic game installation
 echo ">> 1. Verifying game installation..."

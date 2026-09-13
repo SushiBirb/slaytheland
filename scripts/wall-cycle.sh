@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Slay the Princess Wallpaper Cycler for slaytheland
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REAL_SCRIPT="$(readlink -f "${BASH_SOURCE[0]}")"
+DIR="$(cd "$(dirname "$REAL_SCRIPT")/.." && pwd)"
 WALL_DIR="$DIR/assets/wallpapers"
 BG_DIR="$DIR/assets/backgrounds"
 DEFAULT_WALL="$DIR/assets/backgrounds/ch1/cabin exterior/bg cabin p.png"

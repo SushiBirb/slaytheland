@@ -5,7 +5,8 @@
 # ==============================================================================
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+REAL_SCRIPT="$(readlink -f "${BASH_SOURCE[0]}")"
+ROOT="$(cd "$(dirname "$REAL_SCRIPT")/.." && pwd)"
 
 GREEN='\033[0;32m'
 RED='\033[0;31m'

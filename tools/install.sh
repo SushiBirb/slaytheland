@@ -32,7 +32,15 @@ mkdir -p "$HOME/.config/quickshell"
 ln -sfn "$ROOT/quickshell" "$HOME/.config/quickshell/slaytheland"
 echo "✓ Quickshell linked: ~/.config/quickshell/slaytheland -> $ROOT/quickshell"
 
-# Step 4: Verification summary
+# Step 4: Link helper binaries to ~/.local/bin
+echo ">> Linking helper binaries into ~/.local/bin..."
+mkdir -p "$HOME/.local/bin"
+ln -sfn "$ROOT/scripts/wall-cycle.sh" "$HOME/.local/bin/slay-wall-cycle"
+ln -sfn "$ROOT/tools/doctor.sh" "$HOME/.local/bin/slay-doctor"
+chmod +x "$ROOT/scripts/wall-cycle.sh" "$ROOT/tools/doctor.sh"
+echo "✓ Helpers linked: slay-wall-cycle, slay-doctor"
+
+# Step 5: Verification summary
 echo "================================================================================"
 echo "✓ Installation complete! slaytheland is ready."
 echo "  To launch in Quickshell: qs -c slaytheland"
