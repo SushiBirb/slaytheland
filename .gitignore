@@ -1,0 +1,17 @@
+# Slay the Princess Game Assets (Users MUST own and extract from their own game install)
+assets/
+assets/*
+
+# VM Disk Images & Virtual Hardware
+vm/*.qcow2
+vm/*.img
+vm/*.log
+vm/ssh_key
+vm/ssh_key.pub
+
+# Temporary extraction & Python cache
+__pycache__/
+*.py[cod]
+.venv/
+*.tmp
+vm/id_ed25519*

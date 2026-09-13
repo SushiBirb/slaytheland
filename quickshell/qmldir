@@ -1,0 +1,11 @@
+module slaytheland
+singleton Theme Theme.qml
+singleton RoomState RoomState.qml
+singleton Sfx Sfx.qml
+singleton Music Music.qml
+singleton VoiceBus VoiceBus.qml
+singleton Audio services/Audio.qml
+singleton Battery services/Battery.qml
+singleton Notifs services/Notifs.qml
+singleton Session services/Session.qml
+singleton ShellState services/ShellState.qml

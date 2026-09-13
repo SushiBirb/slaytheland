@@ -1,0 +1,6 @@
+module services
+singleton Audio Audio.qml
+singleton Battery Battery.qml
+singleton Notifs Notifs.qml
+singleton Session Session.qml
+singleton ShellState ShellState.qml
