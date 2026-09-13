@@ -38,6 +38,7 @@ echo -e "\n${BOLD}[1] Compositor & Display Server:${NC}"
 check "Hyprland binary" "command -v Hyprland"
 check "Hyprlock binary" "command -v hyprlock"
 check "hyprctl IPC utility" "command -v hyprctl"
+check "Hyprland Lua config valid" "Hyprland --verify-config -c $ROOT/hypr/hyprland.lua"
 
 echo -e "\n${BOLD}[2] Quickshell & Qt Runtime:${NC}"
 check "Quickshell runtime (qs)" "command -v quickshell"
