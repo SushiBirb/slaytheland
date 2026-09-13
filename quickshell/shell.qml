@@ -64,6 +64,13 @@ ShellRoot {
 
     GlobalShortcut {
         appid: "slay"
+        name: "princess_quote"
+        description: "Cycle the current Princess vessel voice quote"
+        onPressed: RoomState.nextPrincessQuote()
+    }
+
+    GlobalShortcut {
+        appid: "slay"
         name: "room"
         description: "Cycle the current room scene"
         onPressed: RoomState.nextRoom()

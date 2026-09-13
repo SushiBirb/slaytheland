@@ -6,7 +6,21 @@ Item {
 
     property real gazeX: RoomState.cursorX
     property real gazeY: RoomState.cursorY
-    property bool talking: VoiceBus.isTalking
+    readonly property bool isPrincessSpeaking: VoiceBus.isTalking && (
+        VoiceBus.currentSpeaker.indexOf("Princess") !== -1 ||
+        VoiceBus.currentSpeaker.indexOf("Witch") !== -1 ||
+        VoiceBus.currentSpeaker.indexOf("Damsel") !== -1 ||
+        VoiceBus.currentSpeaker.indexOf("Nightmare") !== -1 ||
+        VoiceBus.currentSpeaker.indexOf("Tower") !== -1 ||
+        VoiceBus.currentSpeaker.indexOf("Razor") !== -1 ||
+        VoiceBus.currentSpeaker.indexOf("Adversary") !== -1 ||
+        VoiceBus.currentSpeaker.indexOf("Spectre") !== -1 ||
+        VoiceBus.currentSpeaker.indexOf("Prisoner") !== -1 ||
+        VoiceBus.currentSpeaker.indexOf("Beast") !== -1 ||
+        VoiceBus.currentSpeaker.indexOf("Stranger") !== -1 ||
+        VoiceBus.currentSpeaker === RoomState.currentVesselName
+    )
+    property bool talking: isPrincessSpeaking
     property bool blinking: false
     property int poseIndex: 0
 
@@ -69,19 +83,42 @@ Item {
         Behavior on x { SpringAnimation { spring: 4.5; damping: 0.35; mass: 1.0; epsilon: 0.05 } }
         Behavior on y { SpringAnimation { spring: 4.5; damping: 0.35; mass: 1.0; epsilon: 0.05 } }
 
+        // Idle sprite layer - grounded firmly to bottom screen edge
         Image {
-            id: spriteImg
-            anchors.fill: parent
+            id: idleImg
+            anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
+            width: parent.width
+            height: parent.height
             fillMode: Image.PreserveAspectFit
-            source: (root.talking && root.talkFrame)
-                    ? Theme.asset(RoomState.currentTalkSprite)
-                    : Theme.asset(RoomState.currentSprite)
+            verticalAlignment: Image.AlignBottom
+            source: Theme.asset(RoomState.currentSprite)
             asynchronous: true
-            opacity: root.blinking ? 0.88 : 1.0
+            opacity: (root.talking && root.talkFrame) ? 0.0 : (root.blinking ? 0.88 : 1.0)
+            visible: opacity > 0.0
             onStatusChanged: {
                 if (status === Image.Error) {
-                    console.log("Princess sprite error loading:", source);
+                    console.log("Princess idle sprite error loading:", source);
+                }
+            }
+        }
+
+        // Talking sprite layer - crossfaded without rapid texture reloading
+        Image {
+            id: talkImg
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: parent.bottom
+            width: parent.width
+            height: parent.height
+            fillMode: Image.PreserveAspectFit
+            verticalAlignment: Image.AlignBottom
+            source: Theme.asset(RoomState.currentTalkSprite)
+            asynchronous: true
+            opacity: (root.talking && root.talkFrame) ? 1.0 : 0.0
+            visible: opacity > 0.0
+            onStatusChanged: {
+                if (status === Image.Error) {
+                    console.log("Princess talk sprite error loading:", source);
                 }
             }
         }
@@ -96,11 +133,7 @@ Item {
             cursorShape: Qt.PointingHandCursor
             onClicked: {
                 Sfx.playBlade();
-                VoiceBus.triggerQuote(
-                    RoomState.currentVesselName,
-                    RoomState.currentVesselQuote,
-                    RoomState.currentVesselAudio
-                );
+                RoomState.nextPrincessQuote();
             }
         }
     }

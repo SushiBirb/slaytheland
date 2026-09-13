@@ -10,9 +10,20 @@ Singleton {
 
     property int roomIndex: 0
     property int vesselIndex: 0
+    property int vesselQuoteIndex: 0
 
     readonly property var currentRoom: RoomsData.rooms[roomIndex]
     readonly property var currentVessel: VesselsData.vessels[vesselIndex]
+
+    // Dynamic room layers: returns tailored basement for current vessel when in the basement
+    readonly property var currentLayers: {
+        if (currentRoom && (currentRoom.id === "basement" || currentRoom.id === "distant_basement")) {
+            if (currentVessel && currentVessel.basementLayers && currentVessel.basementLayers.length > 0) {
+                return currentVessel.basementLayers;
+            }
+        }
+        return currentRoom && currentRoom.layers ? currentRoom.layers : [];
+    }
 
     // Explicit reactive properties for QML bindings
     readonly property string currentSprite: currentVessel && currentVessel.sprite ? currentVessel.sprite : ""
@@ -35,10 +46,30 @@ Singleton {
 
     property real parallaxStrength: 1.0
 
-    // Shader knobs (fullscreen shader disabled per user request)
-    property bool shaderEnabled: false
-    property real shaderIntensity: 0.0
+    // Shader knobs: controls Hyprland window border pencil shader
+    property bool shaderEnabled: true
+    property real shaderIntensity: 1.0
     property real vignetteIntensity: 0.0
+
+    function applyScreenShader() {
+        var home = Quickshell.env("HOME") || "/home/arch";
+        var shaderPath = home + "/slaytheland/hypr/shaders/pencil_border.glsl";
+        if (root.shaderEnabled) {
+            Quickshell.execDetached(["hyprctl", "keyword", "decoration:screen_shader", shaderPath]);
+        } else {
+            Quickshell.execDetached(["hyprctl", "keyword", "decoration:screen_shader", ""]);
+        }
+    }
+
+    onShaderEnabledChanged: {
+        applyScreenShader();
+    }
+
+    Component.onCompleted: {
+        if (root.shaderEnabled) {
+            applyScreenShader();
+        }
+    }
 
     function updateGlobalCursor(cx, cy) {
         var scr = (Quickshell.screens && Quickshell.screens.length > 0) ? Quickshell.screens[0] : null;
@@ -70,6 +101,7 @@ Singleton {
         for (var i = 0; i < VesselsData.vessels.length; i++) {
             if (VesselsData.vessels[i].id === id) {
                 root.vesselIndex = i;
+                root.vesselQuoteIndex = 0;
                 return;
             }
         }
@@ -77,11 +109,25 @@ Singleton {
 
     function nextVessel() {
         root.vesselIndex = (root.vesselIndex + 1) % VesselsData.vessels.length;
+        root.vesselQuoteIndex = 0;
         console.log("Vessel cycled to:", root.currentVessel.name, "sprite:", root.currentVessel.sprite);
     }
 
     function prevVessel() {
         root.vesselIndex = (root.vesselIndex - 1 + VesselsData.vessels.length) % VesselsData.vessels.length;
+        root.vesselQuoteIndex = 0;
+    }
+
+    function nextPrincessQuote() {
+        if (!currentVessel) return;
+        var qList = currentVessel.quotes;
+        if (qList && qList.length > 0) {
+            root.vesselQuoteIndex = (root.vesselQuoteIndex + 1) % qList.length;
+            var q = qList[root.vesselQuoteIndex];
+            VoiceBus.triggerQuote(currentVesselName, q.text, q.audio);
+        } else if (currentVesselQuote && currentVesselQuote !== "") {
+            VoiceBus.triggerQuote(currentVesselName, currentVesselQuote, currentVesselAudio);
+        }
     }
 
     function updateCursor(mouseX, mouseY, screenW, screenH) {

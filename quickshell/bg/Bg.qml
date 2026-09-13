@@ -36,7 +36,7 @@ Item {
         anchors.fill: parent
 
         Repeater {
-            model: RoomState.currentRoom.layers
+            model: RoomState.currentLayers
 
             Item {
                 id: layerItem
@@ -68,17 +68,17 @@ Item {
         }
     }
 
-    // Princess Companion (Bottom-Centered)
+    // Princess Companion (Bottom-Centered, displayed only in narrative scenes like the Basement)
     Princess {
         id: companion
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
-        width: Math.min(parent.width, 950)
-        height: Math.min(parent.height * 0.90, 780)
+        width: Math.min(parent.width, 1000)
+        height: parent.height
 
         visible: opacity > 0.0
-        opacity: root.companionVisible ? 1.0 : 0.0
+        opacity: (root.companionVisible && RoomState.currentRoom && RoomState.currentRoom.hasPrincess) ? 1.0 : 0.0
 
         Behavior on opacity { NumberAnimation { duration: 350; easing.type: Easing.InOutQuad } }
     }
