@@ -14,8 +14,8 @@ var vessels = [
         audioFile: "audio/voices/princess_chains.flac",
         basementLayers: [
             { name: "Basement Shadow", path: "backgrounds/ch1/basement/farbg flee back p.png", depth: 0.02 },
-            { name: "Basement Chamber", path: "backgrounds/ch1/basement/bg basement distant p.png", depth: 0.05 },
-            { name: "Iron Shackles", path: "backgrounds/ch1/basement/back basement distant p.png", depth: 0.08 }
+            { name: "Basement Chamber", path: "backgrounds/ch1/basement/bg basement distant p.png", depth: 0.06 },
+            { name: "Iron Shackles", path: "backgrounds/ch1/basement/back basement distant p.png", depth: 0.06 }
         ],
         quotes: [
             { text: "Hi! Do you think you can get me out of these chains?", audio: "audio/voices/princess_chains.flac" },
@@ -37,8 +37,8 @@ var vessels = [
         quote: "It's you! My dashing hero. I was so worried you wouldn't come back.",
         audioFile: "audio/voices/princess_damsel_1.flac",
         basementLayers: [
-            { name: "Soft Glow", path: "backgrounds/ch2/damsel/basement/farback damsel basement p.png", depth: 0.03 },
-            { name: "Damsel Chamber", path: "backgrounds/ch2/damsel/basement/bg damsel basement p.png", depth: 0.07 }
+            { name: "Soft Glow", path: "backgrounds/ch2/damsel/basement/farback damsel basement p.png", depth: 0.02 },
+            { name: "Damsel Chamber", path: "backgrounds/ch2/damsel/basement/bg damsel basement p.png", depth: 0.06 }
         ],
         quotes: [
             { text: "It's you! My dashing hero. I was so worried you wouldn't come back.", audio: "audio/voices/princess_damsel_1.flac" },
@@ -60,7 +60,7 @@ var vessels = [
         audioFile: "audio/voices/princess_witch_1.flac",
         basementLayers: [
             { name: "Distant Chains", path: "backgrounds/ch2/witch/basement/chain witch distant p.png", depth: 0.02 },
-            { name: "Root Cellar", path: "backgrounds/ch2/witch/basement/bg witch basement 1 p.png", depth: 0.05 },
+            { name: "Root Cellar", path: "backgrounds/ch2/witch/basement/bg witch basement 1 p.png", depth: 0.06 },
             { name: "Basement Brazier", path: "backgrounds/ch2/witch/basement/fire witch 1 p.png", depth: 0.09 }
         ],
         quotes: [
@@ -83,7 +83,7 @@ var vessels = [
         audioFile: "audio/voices/princess_nightmare_1.flac",
         basementLayers: [
             { name: "Void Darkness", path: "backgrounds/ch2/nightmare/basement/farback nightmare basement p.png", depth: 0.02 },
-            { name: "Rotting Wood", path: "backgrounds/ch2/nightmare/basement/wood nightmare basement p.png", depth: 0.05 },
+            { name: "Rotting Wood", path: "backgrounds/ch2/nightmare/basement/wood nightmare basement p.png", depth: 0.06 },
             { name: "Watching Eyes", path: "backgrounds/ch2/nightmare/basement/eyes nightmare p.png", depth: 0.09 }
         ],
         quotes: [
@@ -106,8 +106,8 @@ var vessels = [
         quote: "The little bird has returned to me. I wonder what he wants.",
         audioFile: "audio/voices/princess_tower_1.flac",
         basementLayers: [
-            { name: "Pillar Heights", path: "backgrounds/ch2/tower/basement/farback tower basement p.png", depth: 0.03 },
-            { name: "Monarch Chamber", path: "backgrounds/ch2/tower/basement/bg tower basement p.png", depth: 0.07 }
+            { name: "Pillar Heights", path: "backgrounds/ch2/tower/basement/farback tower basement p.png", depth: 0.02 },
+            { name: "Monarch Chamber", path: "backgrounds/ch2/tower/basement/bg tower basement p.png", depth: 0.06 }
         ],
         quotes: [
             { text: "The little bird has returned to me. I wonder what he wants.", audio: "audio/voices/princess_tower_1.flac" },
@@ -128,8 +128,8 @@ var vessels = [
         quote: "I hope you've come to rescue me. I've been stuck down here forever.",
         audioFile: "audio/voices/princess_razor_1.flac",
         basementLayers: [
-            { name: "Cavern Shadows", path: "backgrounds/ch2/razor/basement/farback razor basement p.png", depth: 0.03 },
-            { name: "Metallic Cave", path: "backgrounds/ch2/razor/basement/bg razor basement p.png", depth: 0.07 }
+            { name: "Cavern Shadows", path: "backgrounds/ch2/razor/basement/farback razor basement p.png", depth: 0.02 },
+            { name: "Metallic Cave", path: "backgrounds/ch2/razor/basement/bg razor basement p.png", depth: 0.06 }
         ],
         quotes: [
             { text: "I hope you've come to rescue me. I've been stuck down here forever.", audio: "audio/voices/princess_razor_1.flac" },
@@ -150,8 +150,8 @@ var vessels = [
         quote: "Oh, it's you again. I've been hoping you'd find your way back here. Good to see that death doesn't stick for either of us.",
         audioFile: "audio/voices/princess_adversary_1.flac",
         basementLayers: [
-            { name: "Arena Shadows", path: "backgrounds/ch2/adversary/basement/farback adversary basement p.png", depth: 0.03 },
-            { name: "Blood Colosseum", path: "backgrounds/ch2/adversary/basement/bg adversary basement p.png", depth: 0.07 }
+            { name: "Arena Shadows", path: "backgrounds/ch2/adversary/basement/farback adversary basement p.png", depth: 0.02 },
+            { name: "Blood Colosseum", path: "backgrounds/ch2/adversary/basement/bg adversary basement p.png", depth: 0.06 }
         ],
         quotes: [
             { text: "Oh, it's you again. I've been hoping you'd find your way back here. Good to see that death doesn't stick for either of us.", audio: "audio/voices/princess_adversary_1.flac" },
@@ -172,8 +172,8 @@ var vessels = [
         quote: "Oh. It's you. Hiya, killer. I was hoping to see you again. I have some issues with how our last meeting went.",
         audioFile: "audio/voices/princess_spectre_1.flac",
         basementLayers: [
-            { name: "Cold Mist", path: "backgrounds/ch2/spectre/basement/farback spectre basement p.png", depth: 0.03 },
-            { name: "Crypt Chamber", path: "backgrounds/ch2/spectre/basement/bg spectre basement p.png", depth: 0.07 }
+            { name: "Cold Mist", path: "backgrounds/ch2/spectre/basement/farback spectre basement p.png", depth: 0.02 },
+            { name: "Crypt Chamber", path: "backgrounds/ch2/spectre/basement/bg spectre basement p.png", depth: 0.06 }
         ],
         quotes: [
             { text: "Oh. It's you. Hiya, killer. I was hoping to see you again. I have some issues with how our last meeting went.", audio: "audio/voices/princess_spectre_1.flac" },
@@ -194,8 +194,8 @@ var vessels = [
         quote: "What an interesting development. Why don't you have a seat? The two of us should chat before you bury that thing in my heart.",
         audioFile: "audio/voices/princess_prisoner_1.flac",
         basementLayers: [
-            { name: "Cell Wall", path: "backgrounds/ch2/prisoner/basement/farback prisoner basement p.png", depth: 0.03 },
-            { name: "Iron Stocks", path: "backgrounds/ch2/prisoner/basement/bg prisoner basement p.png", depth: 0.07 }
+            { name: "Cell Wall", path: "backgrounds/ch2/prisoner/basement/farback prisoner basement p.png", depth: 0.02 },
+            { name: "Iron Stocks", path: "backgrounds/ch2/prisoner/basement/bg prisoner basement p.png", depth: 0.06 }
         ],
         quotes: [
             { text: "What an interesting development. Why don't you have a seat? The two of us should chat before you bury that thing in my heart.", audio: "audio/voices/princess_prisoner_1.flac" },
@@ -237,8 +237,8 @@ var vessels = [
         quote: "Are you okay?",
         audioFile: "audio/voices/princess_stranger_1.flac",
         basementLayers: [
-            { name: "Fractured Plane", path: "backgrounds/ch2/stranger/basement/farback stranger basement p.png", depth: 0.03 },
-            { name: "Multiplicity Chamber", path: "backgrounds/ch2/stranger/basement/bg stranger basement p.png", depth: 0.07 }
+            { name: "Fractured Plane", path: "backgrounds/ch2/stranger/basement/farback stranger basement p.png", depth: 0.02 },
+            { name: "Multiplicity Chamber", path: "backgrounds/ch2/stranger/basement/bg stranger basement p.png", depth: 0.06 }
         ],
         quotes: [
             { text: "Are you okay?", audio: "audio/voices/princess_stranger_1.flac" },
@@ -270,18 +270,6 @@ var vessels = [
         wallpaper: "wallpapers/_apotheosis/big/apotheosis_1.jpg",
         accentColor: "#fbf5e6",
         quote: "The world is too small. We have outgrown the cage."
-    },
-    {
-        id: "stranger",
-        name: "The Stranger",
-        title: "Chapter II — The Fractured Paradox",
-        chapter: 2,
-        description: "Contradictions folded upon contradictions. Too many faces, too many memories.",
-        sprite: "backgrounds/ch2/stranger/basement/bg stranger basement p.png",
-        talkSprite: "backgrounds/ch2/stranger/basement/farback stranger basement p.png",
-        wallpaper: "wallpapers/_stranger/big/stranger_1.jpg",
-        accentColor: "#706578",
-        quote: "We are all here. Every version you chose, and every version you abandoned."
     },
     {
         id: "fury",

@@ -9,5 +9,6 @@ singleton Battery services/Battery.qml
 singleton Notifs services/Notifs.qml
 singleton Session services/Session.qml
 singleton ShellState services/ShellState.qml
+singleton Workspaces services/Workspaces.qml
 singleton Cursor Cursor.qml
 

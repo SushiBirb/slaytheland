@@ -7,6 +7,7 @@ out vec4 fragColor;
 
 float luma(vec3 c) { return dot(c, vec3(0.2126, 0.7152, 0.0722)); }
 
+// High quality pseudo-random hash for graphite tooth
 float hash(vec2 p) {
     vec3 q = fract(vec3(p.xyx) * 0.1031);
     q += dot(q, q.yzx + 33.33);
@@ -17,7 +18,7 @@ void main() {
     vec4 center = texture(tex, v_texcoord);
     
     // Dynamic intensity (0.0 = completely bypass shader)
-    float u_intensity = 0.35;
+    float u_intensity = 0.50;
     if (u_intensity <= 0.01) {
         fragColor = center;
         return;

@@ -54,28 +54,30 @@ Item {
 
                 x: offsetX
                 y: offsetY
+                z: (modelData.depth && modelData.depth > 0.06) ? 2 : 0
                 Behavior on x { SpringAnimation { spring: 4.5; damping: 0.35; mass: 1.0; epsilon: 0.05 } }
                 Behavior on y { SpringAnimation { spring: 4.5; damping: 0.35; mass: 1.0; epsilon: 0.05 } }
 
                 Image {
                     anchors.fill: parent
-                    anchors.margins: -120 // Bleed for smooth parallax motion without edges
+                    anchors.margins: -48 // Calibrated bleed for 1080p without cropping cabin roof
                     source: Theme.asset(layerItem.modelData.path)
                     fillMode: Image.PreserveAspectCrop
                     asynchronous: true
                 }
             }
         }
-    }
 
-    // Princess Companion (aligned to scene perspective, displayed only in narrative scenes like the Basement)
-    Princess {
-        id: companion
-        anchors.fill: parent
+        // Princess Companion (aligned to scene perspective, locked to chamber wall at z: 1)
+        Princess {
+            id: companion
+            anchors.fill: parent
+            z: 1
 
-        visible: opacity > 0.0
-        opacity: (root.companionVisible && RoomState.currentRoom && RoomState.currentRoom.hasPrincess) ? 1.0 : 0.0
+            visible: opacity > 0.0
+            opacity: (root.companionVisible && RoomState.currentRoom && RoomState.currentRoom.hasPrincess) ? 1.0 : 0.0
 
-        Behavior on opacity { NumberAnimation { duration: 350; easing.type: Easing.InOutQuad } }
+            Behavior on opacity { NumberAnimation { duration: 350; easing.type: Easing.InOutQuad } }
+        }
     }
 }

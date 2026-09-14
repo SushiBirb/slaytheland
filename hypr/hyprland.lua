@@ -12,7 +12,7 @@ local mod = "SUPER"
 
 hl.monitor({
     output   = "",
-    mode     = "preferred",
+    mode     = "1920x1080@60",
     position = "auto",
     scale    = 1,
 })

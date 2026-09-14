@@ -51,9 +51,9 @@ Item {
         anchors.fill: parent
         transformOrigin: Item.Center
 
-        // Parallax locked to basement chamber wall (depth: 0.05 -> 16.0px factor)
+        // Parallax locked to basement chamber wall (depth: 0.06 -> 19.2px factor)
         // Exactly identical to how the blade is locked to the table in the cabin interior
-        readonly property real depthFactor: 16.0
+        readonly property real depthFactor: 19.2
         property real offsetX: depthFactor * RoomState.cursorX * -1.0
         property real offsetY: (depthFactor * 0.5) * RoomState.cursorY * -1.0
 
@@ -69,7 +69,7 @@ Item {
         Image {
             id: idleImg
             anchors.fill: parent
-            anchors.margins: -120
+            anchors.margins: -48
             fillMode: Image.PreserveAspectCrop
             source: Theme.asset(RoomState.currentSprite)
             asynchronous: true
@@ -87,7 +87,7 @@ Item {
         Image {
             id: talkImg
             anchors.fill: parent
-            anchors.margins: -120
+            anchors.margins: -48
             fillMode: Image.PreserveAspectCrop
             source: Theme.asset(RoomState.currentTalkSprite)
             asynchronous: true

@@ -37,7 +37,7 @@ else
     # GDK Wayland backend with hardware-accelerated OpenGL
     export GDK_BACKEND=wayland
     EXTRA_ARGS+=(
-        -device virtio-vga-gl
+        -device virtio-vga-gl,xres=1920,yres=1080
         -display gtk,gl=on,show-menubar=off
         -device virtio-tablet-pci
         -device virtio-keyboard-pci

@@ -82,7 +82,7 @@ Item {
                         id: wsChip
                         required property int index
                         property int wsId: index + 1
-                        property bool isActive: Hyprland.focusedWorkspace && Hyprland.focusedWorkspace.id === wsId
+                        property bool isActive: Workspaces.activeId === wsId
 
                         width: 28
                         height: 28
@@ -117,7 +117,7 @@ Item {
                             cursorShape: Qt.PointingHandCursor
                             onClicked: {
                                 Sfx.playFootstep();
-                                Hyprland.dispatch("workspace " + wsChip.wsId);
+                                Workspaces.focusWorkspace(wsChip.wsId);
                                 if (wsChip.wsId === 1) {
                                     VoiceBus.onWorkspaceHero();
                                 }

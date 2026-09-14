@@ -51,8 +51,8 @@ var rooms = [
         hasPrincess: true,
         layers: [
             { name: "Basement Shadow", path: "backgrounds/ch1/basement/farbg flee back p.png", depth: 0.02 },
-            { name: "Basement Chamber", path: "backgrounds/ch1/basement/bg basement distant p.png", depth: 0.05 },
-            { name: "Iron Shackles", path: "backgrounds/ch1/basement/back basement distant p.png", depth: 0.08 }
+            { name: "Basement Chamber", path: "backgrounds/ch1/basement/bg basement distant p.png", depth: 0.06 },
+            { name: "Iron Shackles", path: "backgrounds/ch1/basement/back basement distant p.png", depth: 0.06 }
         ]
     },
     {
@@ -62,8 +62,8 @@ var rooms = [
         hasPrincess: true,
         layers: [
             { name: "Basement Shadow", path: "backgrounds/ch1/basement/farbg flee back p.png", depth: 0.02 },
-            { name: "Basement Chamber", path: "backgrounds/ch1/basement/bg basement distant p.png", depth: 0.05 },
-            { name: "Iron Shackles", path: "backgrounds/ch1/basement/back basement distant p.png", depth: 0.08 }
+            { name: "Basement Chamber", path: "backgrounds/ch1/basement/bg basement distant p.png", depth: 0.06 },
+            { name: "Iron Shackles", path: "backgrounds/ch1/basement/back basement distant p.png", depth: 0.06 }
         ]
     },
     {
