@@ -83,19 +83,26 @@ sprite_mappings = {
     "images/_sprites/ch1/princess distant/princess d questioning talk p.png": "sprites/ch1/princess_talk.png",
     "images/_sprites/ch1/princess distant/princess d down p.png": "sprites/ch1/princess_thinking.png",
     "images/_sprites/ch1/princess distant/princess d haughty p.png": "sprites/ch1/princess_haughty.png",
-    "images/_sprites/ch2/damsel/damsel close stare p.png": "sprites/ch2/damsel_idle.png",
-    "images/_sprites/ch2/damsel/damsel close talk p.png": "sprites/ch2/damsel_talk.png",
-    "images/_sprites/ch2/witch/witch free crawl p.png": "sprites/ch2/witch_idle.png",
-    "images/_sprites/ch2/nightmare/nightmare neutral p.png": "sprites/ch2/nightmare_idle.png",
-    "images/_sprites/ch2/tower/tower neutral p.png": "sprites/ch2/tower_idle.png",
-    "images/_sprites/ch2/razor/razor neutral p.png": "sprites/ch2/razor_idle.png",
-    "images/_sprites/ch2/adversary/adversary neutral p.png": "sprites/ch2/adversary_idle.png",
-    "images/_sprites/ch2/spectre/spectre neutral p.png": "sprites/ch2/spectre_idle.png",
-    "images/_sprites/ch2/spectre/spectre talk p.png": "sprites/ch2/spectre_talk.png",
-    "images/_sprites/ch2/prisoner/prisoner neutral p.png": "sprites/ch2/prisoner_idle.png",
-    "images/_sprites/ch2/prisoner/prisoner talk p.png": "sprites/ch2/prisoner_talk.png",
-    "images/_sprites/ch2/beast/beast neutral p.png": "sprites/ch2/beast_idle.png",
-    "images/_sprites/ch2/stranger/stranger neutral p.png": "sprites/ch2/stranger_idle.png"
+    "images/_sprites/ch2/damsel/distant/damsel d neutral p.png": "sprites/ch2/damsel_idle.png",
+    "images/_sprites/ch2/damsel/distant/damsel d talk p.png": "sprites/ch2/damsel_talk.png",
+    "images/_sprites/ch2/witch/_cont/witch d chain neutral p.png": "sprites/ch2/witch_idle.png",
+    "images/_sprites/ch2/witch/_cont/witch d chain neutral talk p.png": "sprites/ch2/witch_talk.png",
+    "images/_sprites/ch2/nightmare/distant/nightmare approach1 p.png": "sprites/ch2/nightmare_idle.png",
+    "images/_sprites/ch2/nightmare/distant/nightmare approach2 p.png": "sprites/ch2/nightmare_talk.png",
+    "images/_sprites/ch2/tower/_cont/tower d neutral p.png": "sprites/ch2/tower_idle.png",
+    "images/_sprites/ch2/tower/_cont/tower d curious talk p.png": "sprites/ch2/tower_talk.png",
+    "images/_sprites/ch2/razor/_cont/razor d cheeky p.png": "sprites/ch2/razor_idle.png",
+    "images/_sprites/ch2/razor/_cont/razor d idea talk p.png": "sprites/ch2/razor_talk.png",
+    "images/_sprites/ch2/adversary/_cont/adversary d unarmed grin p.png": "sprites/ch2/adversary_idle.png",
+    "images/_sprites/ch2/adversary/_cont/adversary d revive p.png": "sprites/ch2/adversary_talk.png",
+    "images/_sprites/ch2/prisoner/distant/prisoner d neutral p.png": "sprites/ch2/prisoner_idle.png",
+    "images/_sprites/ch2/prisoner/distant/prisoner d talk p.png": "sprites/ch2/prisoner_talk.png",
+    "images/_sprites/ch2/beast/distant/beast d repose p.png": "sprites/ch2/beast_idle.png",
+    "images/_sprites/ch2/beast/distant/beast d stare p.png": "sprites/ch2/beast_talk.png",
+    "images/_sprites/ch2/spectre/distant/spectre d serious p.png": "sprites/ch2/spectre_idle.png",
+    "images/_sprites/ch2/spectre/distant/spectre d serious talk p.png": "sprites/ch2/spectre_talk.png",
+    "images/_sprites/ch2/stranger/_cont/stranger neutral start p.png": "sprites/ch2/stranger_idle.png",
+    "images/_sprites/ch2/stranger/_cont/stranger neutral start talk p.png": "sprites/ch2/stranger_talk.png"
 }
 for src, dst in sprite_mappings.items():
     extract_file(src, os.path.join(DEST_DIR, dst))
@@ -157,15 +164,52 @@ if os.path.exists(voices_src):
         "ch2/stranger/contrarian/bonus1.flac": "voice_contrarian.flac",
         "ch2/tower/broken/ch2_broken_1.flac": "voice_broken.flac",
         "ch2/witch/opportunist/ch2_opportunist_1.flac": "voice_opportunist.flac",
-        # Princess Chapter 1 & 2
+        # Princess Chapter 1
         "ch1/empty/princess/empty_p_1.flac": "princess_empty_1.flac",
         "ch1/empty/princess/empty_p_10.flac": "princess_chains.flac",
         "ch1/empty/princess/empty_p_55.flac": "princess_empty_2.flac",
         "ch1/knife/princess/stab_p_1.flac": "princess_who_there.flac",
-        "ch2/tower/princess/ch2_tp_1.flac": "princess_come_down.flac",
-        "ch2/damsel/princess/ch2_dp_1.flac": "princess_damsel.flac",
-        "ch2/witch/princess/ch2_wp_1.flac": "princess_witch.flac",
-        "ch2/nightmare/princess/ch2_np_1.flac": "princess_nightmare.flac",
+        # Damsel
+        "ch2/damsel/_basement/princess/1.flac": "princess_damsel_1.flac",
+        "ch2/damsel/_basement/princess/2.flac": "princess_damsel_2.flac",
+        "ch2/damsel/_basement/princess/3.flac": "princess_damsel_3.flac",
+        # Witch (In-room lines)
+        "ch2/witch/princess/ch2_wp_5.flac": "princess_witch_1.flac",
+        "ch2/witch/princess/ch2_wp_6.flac": "princess_witch_2.flac",
+        "ch2/witch/princess/ch2_wp_8.flac": "princess_witch_3.flac",
+        # Nightmare (In-room lines)
+        "ch2/nightmare/princess/ch2_np_3.flac": "princess_nightmare_1.flac",
+        "ch2/nightmare/princess/ch2_np_4a.flac": "princess_nightmare_2.flac",
+        "ch2/nightmare/princess/ch2_np_6.flac": "princess_nightmare_3.flac",
+        "ch2/nightmare/princess/ch2_np_8.flac": "princess_nightmare_4.flac",
+        # Tower (In-room lines)
+        "ch2/tower/princess/ch2_tp_2.flac": "princess_tower_1.flac",
+        "ch2/tower/princess/ch2_tp_3.flac": "princess_tower_2.flac",
+        "ch2/tower/princess/ch2_tp_8.flac": "princess_tower_3.flac",
+        # Razor
+        "ch2/razor/princess/ch2_rp_1.flac": "princess_razor_1.flac",
+        "ch2/razor/princess/ch2_rp_2.flac": "princess_razor_2.flac",
+        "ch2/razor/princess/ch2_rp_3.flac": "princess_razor_3.flac",
+        # Adversary (In-room lines)
+        "ch2/adversary/princess/ch2_ap_2.flac": "princess_adversary_1.flac",
+        "ch2/adversary/princess/ch2_ap_3.flac": "princess_adversary_2.flac",
+        "ch2/adversary/princess/ch2_ap_4.flac": "princess_adversary_3.flac",
+        # Prisoner (In-room lines)
+        "ch2/prisoner/princess/ch2_pp_2.flac": "princess_prisoner_1.flac",
+        "ch2/prisoner/princess/ch2_pp_3.flac": "princess_prisoner_2.flac",
+        # Beast
+        "ch2/beast/princess/ch2_bp_1.flac": "princess_beast_1.flac",
+        "ch2/beast/princess/ch2_bp_2.flac": "princess_beast_2.flac",
+        # Spectre
+        "ch2/spectre/princess/ch2_sp_1.flac": "princess_spectre_1.flac",
+        "ch2/spectre/_encounter/princess/1.flac": "princess_spectre_2.flac",
+        "ch2/spectre/_encounter/princess/4.flac": "princess_spectre_3.flac",
+        # Stranger
+        "ch2/stranger/_encounter/princess/2.flac": "princess_stranger_1.flac",
+        "ch2/stranger/_encounter/princess/3.flac": "princess_stranger_2.flac",
+        "ch2/stranger/_encounter/princess/4.flac": "princess_stranger_3.flac",
+        "ch2/stranger/_encounter/princess/5.flac": "princess_stranger_4.flac",
+        # Special
         "caught/innocent.flac": "princess_innocent.flac"
     }
     for rel_src, dst_name in voice_files.items():

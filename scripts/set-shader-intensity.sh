@@ -8,12 +8,15 @@ set -euo pipefail
 
 INTENSITY="${1:-0.5}"
 
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+
 # If intensity is near zero, disable the screen shader
 IS_ZERO=$(awk -v v="$INTENSITY" 'BEGIN { print (v <= 0.02) ? "1" : "0" }')
 if [ "$IS_ZERO" = "1" ]; then
     hyprctl eval 'hl.config({ decoration = { screen_shader = "" } })' >/dev/null 2>&1 || true
     hyprctl keyword decoration:screen_shader "" >/dev/null 2>&1 || true
-    exit 0
+    # Also update file with 0.0 intensity so direct file references immediately clear
+    INTENSITY="0.0"
 fi
 
 # Target directory in user's hypr config
@@ -38,6 +41,7 @@ out vec4 fragColor;
 
 float luma(vec3 c) { return dot(c, vec3(0.2126, 0.7152, 0.0722)); }
 
+// High quality pseudo-random hash for graphite tooth
 float hash(vec2 p) {
     vec3 q = fract(vec3(p.xyx) * 0.1031);
     q += dot(q, q.yzx + 33.33);
@@ -45,14 +49,31 @@ float hash(vec2 p) {
 }
 
 void main() {
+    vec4 center = texture(tex, v_texcoord);
+    
+    // Dynamic intensity (0.0 = completely bypass shader)
+    float u_intensity = __INTENSITY__;
+    if (u_intensity <= 0.01) {
+        fragColor = center;
+        return;
+    }
+    
     vec2 res = vec2(textureSize(tex, 0));
     vec2 onePixel = 1.0 / res;
     
-    // Center color
-    vec4 center = texture(tex, v_texcoord);
-    
-    // Sample 4 neighbors for edge detection (Laplacian kernel)
     float c = luma(center.rgb);
+    
+    // Quick exit for mid/bright flat areas - guarantees text & flat light paper remain 100% crisp
+    // Only dark lines (c < 0.48) or window border crimson/parchment colors can be affected
+    bool isBorderTone = (center.r > 0.45 && center.g < 0.35 && center.b < 0.45) || // Crimson / dried blood
+                        (center.r > 0.80 && center.g > 0.75 && center.b > 0.65);   // Antique parchment
+    
+    if (c >= 0.52 && !isBorderTone) {
+        fragColor = center;
+        return;
+    }
+    
+    // Sample 4 cardinal neighbors for edge contrast
     float l = luma(texture(tex, v_texcoord - vec2(onePixel.x * 2.0, 0.0)).rgb);
     float r = luma(texture(tex, v_texcoord + vec2(onePixel.x * 2.0, 0.0)).rgb);
     float u = luma(texture(tex, v_texcoord - vec2(0.0, onePixel.y * 2.0)).rgb);
@@ -60,43 +81,57 @@ void main() {
     
     float edge = abs(l + r + u + d - 4.0 * c);
     
-    // Detect window border colors ONLY when on an actual edge/boundary (edge > 0.03)
-    // This strictly prevents grain from bleeding into flat window contents, documents, or light backgrounds
-    float isBorderColor = 0.0;
-    if (edge > 0.03) {
-        if (center.r > 0.4 && center.g < 0.25 && center.b < 0.35) {
-            isBorderColor = 1.0;
-        } else if (center.r > 0.75 && center.g > 0.72 && center.b > 0.65) {
-            isBorderColor = 0.7;
-        }
-    }
-    
-    float edgeFactor = clamp(edge * 2.0 + isBorderColor * 0.6, 0.0, 1.0);
-    
-    // Dynamic intensity passed from Quickshell slider
-    float u_intensity = __INTENSITY__;
-    
-    if (edgeFactor > 0.12 && u_intensity > 0.01) {
-        vec2 px = v_texcoord * res;
-        // Calibrated subtle graphite tooth
-        float grain = (hash(px * 1.3) - 0.5) * 0.18;
-        // Fine cross-hatch pencil stroke
-        float hatch = sin((px.x + px.y) * 1.5) * 0.07;
-        
-        vec3 shaded = center.rgb + (grain + hatch) * edgeFactor * u_intensity;
-        fragColor = vec4(clamp(shaded, 0.0, 1.0), center.a);
-    } else {
+    // Strict edge threshold: must have genuine contrast
+    if (edge < 0.05) {
         fragColor = center;
+        return;
     }
+    
+    // Authentic charcoal line detection:
+    // Low luminance + high contrast edge = hand-drawn dark contrasting stroke
+    float darkLineFactor = smoothstep(0.48, 0.12, c) * smoothstep(0.05, 0.25, edge);
+    float borderFactor = isBorderTone ? smoothstep(0.04, 0.20, edge) : 0.0;
+    
+    float strokeFactor = max(darkLineFactor, borderFactor);
+    if (strokeFactor <= 0.02) {
+        fragColor = center;
+        return;
+    }
+    
+    vec2 px = v_texcoord * res;
+    // Charcoal grain tooth: clumped graphite texture
+    float grain = hash(px * 1.25);
+    // Subtle cross-hatch stippling along the stroke
+    float stipple = sin(px.x * 0.95 + px.y * 0.95) * 0.5 + 0.5;
+    float graphiteMod = (grain * 0.65 + stipple * 0.35);
+    
+    // Modulate dark lines: deepens and breaks up charcoal strokes naturally
+    // Never adds additive white blur to crisp edges
+    vec3 shaded = center.rgb * (1.0 - (graphiteMod - 0.25) * strokeFactor * u_intensity * 0.45);
+    fragColor = vec4(clamp(shaded, 0.0, 1.0), center.a);
 }
 GLSLEOF
 
 # Substitute intensity into shader
 sed -i "s/__INTENSITY__/$INTENSITY/g" "$TARGET"
 
-# Synchronize canonical pencil_border.glsl
+# Synchronize canonical pencil_border.glsl in config and repo directories
 cp -f "$TARGET" "$SHADER_DIR/pencil_border.glsl"
+if [ -d "$ROOT/hypr/shaders" ]; then
+    cp -f "$TARGET" "$ROOT/hypr/shaders/pencil_border.glsl"
+fi
+if [ -d "$HOME/slaytheland/hypr/shaders" ]; then
+    cp -f "$TARGET" "$HOME/slaytheland/hypr/shaders/pencil_border.glsl"
+fi
+if [ -d "/home/arch/slaytheland/hypr/shaders" ]; then
+    cp -f "$TARGET" "/home/arch/slaytheland/hypr/shaders/pencil_border.glsl" 2>/dev/null || true
+fi
 
 # Hot-reload in Hyprland (supports Lua and legacy .conf)
-hyprctl eval "hl.config({ decoration = { screen_shader = '$TARGET' } })" >/dev/null 2>&1 || true
-hyprctl keyword decoration:screen_shader "$TARGET" >/dev/null 2>&1 || true
+if [ "$IS_ZERO" = "1" ]; then
+    hyprctl eval 'hl.config({ decoration = { screen_shader = "" } })' >/dev/null 2>&1 || true
+    hyprctl keyword decoration:screen_shader "" >/dev/null 2>&1 || true
+else
+    hyprctl eval "hl.config({ decoration = { screen_shader = '$TARGET' } })" >/dev/null 2>&1 || true
+    hyprctl keyword decoration:screen_shader "$TARGET" >/dev/null 2>&1 || true
+fi

@@ -27,17 +27,6 @@ Item {
     implicitWidth: 600
     implicitHeight: 750
 
-    // Procedural breathing sine-wave
-    property real time: 0.0
-    Timer {
-        interval: 16
-        running: true
-        repeat: true
-        onTriggered: root.time += 0.04
-    }
-
-    readonly property real breathScale: 1.0 + 0.015 * Math.sin(root.time)
-
     // Random eye blink timer (every 3 to 7 seconds)
     Timer {
         id: blinkTimer
@@ -57,29 +46,21 @@ Item {
         onTriggered: root.blinking = false
     }
 
-    // Lip-sync alternator during dialogue (8 Hz)
-    property bool talkFrame: false
-    Timer {
-        interval: 125 // 8 Hz
-        running: root.talking
-        repeat: true
-        onTriggered: root.talkFrame = !root.talkFrame
-    }
-
     Item {
         id: container
         anchors.fill: parent
         transformOrigin: Item.Center
 
-        // Parallax locked to wall/shackles depth (depth: 0.08 -> 25.6px factor)
-        readonly property real depthFactor: 25.6
+        // Parallax locked to basement chamber wall (depth: 0.05 -> 16.0px factor)
+        // Exactly identical to how the blade is locked to the table in the cabin interior
+        readonly property real depthFactor: 16.0
         property real offsetX: depthFactor * RoomState.cursorX * -1.0
         property real offsetY: (depthFactor * 0.5) * RoomState.cursorY * -1.0
 
         x: offsetX
         y: offsetY
         rotation: 0
-        scale: root.breathScale
+        scale: 1.0
 
         Behavior on x { SpringAnimation { spring: 4.5; damping: 0.35; mass: 1.0; epsilon: 0.05 } }
         Behavior on y { SpringAnimation { spring: 4.5; damping: 0.35; mass: 1.0; epsilon: 0.05 } }
@@ -92,8 +73,9 @@ Item {
             fillMode: Image.PreserveAspectCrop
             source: Theme.asset(RoomState.currentSprite)
             asynchronous: true
-            opacity: (root.talking && root.talkFrame) ? 0.0 : (root.blinking ? 0.88 : 1.0)
+            opacity: (root.talking && RoomState.currentTalkSprite !== RoomState.currentSprite) ? 0.0 : (root.blinking ? 0.88 : 1.0)
             visible: opacity > 0.0
+            Behavior on opacity { NumberAnimation { duration: 160; easing.type: Easing.InOutQuad } }
             onStatusChanged: {
                 if (status === Image.Error) {
                     console.log("Princess idle sprite error loading:", source);
@@ -101,7 +83,7 @@ Item {
             }
         }
 
-        // Talking sprite layer - crossfaded without rapid texture reloading
+        // Talking sprite layer - smooth stable pose during speech without neck jitter
         Image {
             id: talkImg
             anchors.fill: parent
@@ -109,8 +91,9 @@ Item {
             fillMode: Image.PreserveAspectCrop
             source: Theme.asset(RoomState.currentTalkSprite)
             asynchronous: true
-            opacity: (root.talking && root.talkFrame) ? 1.0 : 0.0
+            opacity: (root.talking && RoomState.currentTalkSprite !== RoomState.currentSprite) ? 1.0 : 0.0
             visible: opacity > 0.0
+            Behavior on opacity { NumberAnimation { duration: 160; easing.type: Easing.InOutQuad } }
             onStatusChanged: {
                 if (status === Image.Error) {
                     console.log("Princess talk sprite error loading:", source);

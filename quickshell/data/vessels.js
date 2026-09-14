@@ -42,8 +42,8 @@ var vessels = [
         ],
         quotes: [
             { text: "It's you! My dashing hero. I was so worried you wouldn't come back.", audio: "audio/voices/princess_damsel_1.flac" },
-            { text: "I'm okay with whatever you come up with. You can cut my arm off again.", audio: "audio/voices/princess_damsel.flac" },
-            { text: "H-hello? Is someone there?", audio: "audio/voices/princess_hello.flac" }
+            { text: "I'm sorry! Didn't you want me to?", audio: "audio/voices/princess_damsel_2.flac" },
+            { text: "I'm okay with whatever you come up with. You can cut my arm off again.", audio: "audio/voices/princess_damsel_3.flac" }
         ]
     },
     {
@@ -53,10 +53,10 @@ var vessels = [
         chapter: 2,
         description: "Leaves in her hair, mud on her face, and venom in her eyes.",
         sprite: "sprites/ch2/witch_idle.png",
-        talkSprite: "sprites/ch2/witch_idle.png",
+        talkSprite: "sprites/ch2/witch_talk.png",
         wallpaper: "wallpapers/_witch/big/witch_1.jpg",
         accentColor: "#801336",
-        quote: "Well? I seem to remember you having a tongue.",
+        quote: "And there you are, one hand tucked away behind your back, gripping that sharp, sharp blade, no doubt.",
         audioFile: "audio/voices/princess_witch_1.flac",
         basementLayers: [
             { name: "Distant Chains", path: "backgrounds/ch2/witch/basement/chain witch distant p.png", depth: 0.02 },
@@ -64,9 +64,9 @@ var vessels = [
             { name: "Basement Brazier", path: "backgrounds/ch2/witch/basement/fire witch 1 p.png", depth: 0.09 }
         ],
         quotes: [
-            { text: "Well? I seem to remember you having a tongue.", audio: "audio/voices/princess_witch_1.flac" },
-            { text: "Just because I'll never trust you doesn't mean I won't use you to get what I want.", audio: "audio/voices/princess_witch_2.flac" },
-            { text: "The cabin lets prying little beasts like you come as you please, but it insists I stay where I am.", audio: "audio/voices/princess_witch_3.flac" }
+            { text: "And there you are, one hand tucked away behind your back, gripping that sharp, sharp blade, no doubt.", audio: "audio/voices/princess_witch_1.flac" },
+            { text: "So we've dropped the pretenses.", audio: "audio/voices/princess_witch_2.flac" },
+            { text: "And there you are, once again seeming to offer a helping hand while likely hiding the other behind your back. Fine. I'll play along for now. What do you want?", audio: "audio/voices/princess_witch_3.flac" }
         ]
     },
     {
@@ -76,10 +76,10 @@ var vessels = [
         chapter: 2,
         description: "A bone mask hiding an abyss. Tendrils of shadow coil around her.",
         sprite: "sprites/ch2/nightmare_idle.png",
-        talkSprite: "sprites/ch2/nightmare_idle.png",
+        talkSprite: "sprites/ch2/nightmare_talk.png",
         wallpaper: "wallpapers/_nightmare/big/nightmare_1.jpg",
         accentColor: "#e02438",
-        quote: "Can't decide what you want to do, can you?",
+        quote: "There you are! I told you I was going to find you.",
         audioFile: "audio/voices/princess_nightmare_1.flac",
         basementLayers: [
             { name: "Void Darkness", path: "backgrounds/ch2/nightmare/basement/farback nightmare basement p.png", depth: 0.02 },
@@ -87,9 +87,10 @@ var vessels = [
             { name: "Watching Eyes", path: "backgrounds/ch2/nightmare/basement/eyes nightmare p.png", depth: 0.09 }
         ],
         quotes: [
-            { text: "Can't decide what you want to do, can you?", audio: "audio/voices/princess_nightmare_1.flac" },
-            { text: "Oh, well. Standing there gasping like a fish is more fun than dead, even if you look ridiculous.", audio: "audio/voices/princess_nightmare_2.flac" },
-            { text: "I don't want to hurt anyone. I like the world! I think.", audio: "audio/voices/princess_innocent.flac" }
+            { text: "There you are! I told you I was going to find you.", audio: "audio/voices/princess_nightmare_1.flac" },
+            { text: "And you brought your little knife with you again. Cute.", audio: "audio/voices/princess_nightmare_2.flac" },
+            { text: "No little knife this time? It's almost like... you want me to get you.", audio: "audio/voices/princess_nightmare_3.flac" },
+            { text: "I wonder how many times I'll get to play with you before you break.", audio: "audio/voices/princess_nightmare_4.flac" }
         ]
     },
     {
@@ -99,18 +100,19 @@ var vessels = [
         chapter: 2,
         description: "Colossal, divine, and demanding of your complete submission.",
         sprite: "sprites/ch2/tower_idle.png",
-        talkSprite: "sprites/ch2/tower_idle.png",
+        talkSprite: "sprites/ch2/tower_talk.png",
         wallpaper: "wallpapers/_tower/big/tower_1.jpg",
         accentColor: "#d4a373",
-        quote: "The collapse of the old is a necessary prelude to the birth of the new, and the world as it is now is overdue for alterations.",
+        quote: "The little bird has returned to me. I wonder what he wants.",
         audioFile: "audio/voices/princess_tower_1.flac",
         basementLayers: [
             { name: "Pillar Heights", path: "backgrounds/ch2/tower/basement/farback tower basement p.png", depth: 0.03 },
             { name: "Monarch Chamber", path: "backgrounds/ch2/tower/basement/bg tower basement p.png", depth: 0.07 }
         ],
         quotes: [
-            { text: "The collapse of the old is a necessary prelude to the birth of the new, and the world as it is now is overdue for alterations.", audio: "audio/voices/princess_tower_1.flac" },
-            { text: "Don't be a stranger. It's been so long since I've had any visitors, come on down.", audio: "audio/voices/princess_come_down.flac" }
+            { text: "The little bird has returned to me. I wonder what he wants.", audio: "audio/voices/princess_tower_1.flac" },
+            { text: "You've brought that knife again... even though you know it's useless. Such charming audacity.", audio: "audio/voices/princess_tower_2.flac" },
+            { text: "That's my good little bird. Now... why don't we talk?", audio: "audio/voices/princess_tower_3.flac" }
         ]
     },
     {
@@ -120,19 +122,19 @@ var vessels = [
         chapter: 2,
         description: "Made of gleaming blades and infinite cutting edges.",
         sprite: "sprites/ch2/razor_idle.png",
-        talkSprite: "sprites/ch2/razor_idle.png",
+        talkSprite: "sprites/ch2/razor_talk.png",
         wallpaper: "wallpapers/_razor/big/razor_1.jpg",
         accentColor: "#e63946",
-        quote: "Okay, I'm bored now.",
+        quote: "I hope you've come to rescue me. I've been stuck down here forever.",
         audioFile: "audio/voices/princess_razor_1.flac",
         basementLayers: [
             { name: "Cavern Shadows", path: "backgrounds/ch2/razor/basement/farback razor basement p.png", depth: 0.03 },
             { name: "Metallic Cave", path: "backgrounds/ch2/razor/basement/bg razor basement p.png", depth: 0.07 }
         ],
         quotes: [
-            { text: "Okay, I'm bored now.", audio: "audio/voices/princess_razor_1.flac" },
-            { text: "It would be so much easier to prove that I do have a sharp object. I could just show it to you! But I don't have one, so I can't.", audio: "audio/voices/princess_razor_2.flac" },
-            { text: "But look at this! Hands! Hands that don't have anything in them to stab you with.", audio: "audio/voices/princess_razor_3.flac" }
+            { text: "I hope you've come to rescue me. I've been stuck down here forever.", audio: "audio/voices/princess_razor_1.flac" },
+            { text: "Finally, somebody! Quick, get me out of these chains, we're not safe here.", audio: "audio/voices/princess_razor_2.flac" },
+            { text: "What are you waiting for? You are here to rescue me, right?", audio: "audio/voices/princess_razor_3.flac" }
         ]
     },
     {
@@ -142,18 +144,19 @@ var vessels = [
         chapter: 2,
         description: "Towering, muscular, and exhilarated by the thrill of eternal combat.",
         sprite: "sprites/ch2/adversary_idle.png",
-        talkSprite: "sprites/ch2/adversary_idle.png",
+        talkSprite: "sprites/ch2/adversary_talk.png",
         wallpaper: "wallpapers/_adversary/big/adversary_1.jpg",
         accentColor: "#9b2226",
-        quote: "Yes. You get it, don't you?",
+        quote: "Oh, it's you again. I've been hoping you'd find your way back here. Good to see that death doesn't stick for either of us.",
         audioFile: "audio/voices/princess_adversary_1.flac",
         basementLayers: [
             { name: "Arena Shadows", path: "backgrounds/ch2/adversary/basement/farback adversary basement p.png", depth: 0.03 },
             { name: "Blood Colosseum", path: "backgrounds/ch2/adversary/basement/bg adversary basement p.png", depth: 0.07 }
         ],
         quotes: [
-            { text: "Yes. You get it, don't you?", audio: "audio/voices/princess_adversary_1.flac" },
-            { text: "Are you really going to make me explain it? Look at how evenly matched we are!", audio: "audio/voices/princess_adversary_2.flac" }
+            { text: "Oh, it's you again. I've been hoping you'd find your way back here. Good to see that death doesn't stick for either of us.", audio: "audio/voices/princess_adversary_1.flac" },
+            { text: "And you brought your little knife, too. Yes.", audio: "audio/voices/princess_adversary_2.flac" },
+            { text: "I'm going to have fun breaking you into little pieces.", audio: "audio/voices/princess_adversary_3.flac" }
         ]
     },
     {
@@ -166,15 +169,16 @@ var vessels = [
         talkSprite: "sprites/ch2/spectre_talk.png",
         wallpaper: "wallpapers/_spectre/big/spectre_1.jpg",
         accentColor: "#706578",
-        quote: "You're adorable when you're confused.",
+        quote: "Oh. It's you. Hiya, killer. I was hoping to see you again. I have some issues with how our last meeting went.",
         audioFile: "audio/voices/princess_spectre_1.flac",
         basementLayers: [
             { name: "Cold Mist", path: "backgrounds/ch2/spectre/basement/farback spectre basement p.png", depth: 0.03 },
             { name: "Crypt Chamber", path: "backgrounds/ch2/spectre/basement/bg spectre basement p.png", depth: 0.07 }
         ],
         quotes: [
-            { text: "You're adorable when you're confused.", audio: "audio/voices/princess_spectre_1.flac" },
-            { text: "But I didn't say you could touch me.", audio: "audio/voices/princess_spectre_2.flac" }
+            { text: "Oh. It's you. Hiya, killer. I was hoping to see you again. I have some issues with how our last meeting went.", audio: "audio/voices/princess_spectre_1.flac" },
+            { text: "You're adorable when you're confused.", audio: "audio/voices/princess_spectre_2.flac" },
+            { text: "Why are you even here? Just making sure you finished the job or what?", audio: "audio/voices/princess_spectre_3.flac" }
         ]
     },
     {
@@ -187,16 +191,15 @@ var vessels = [
         talkSprite: "sprites/ch2/prisoner_talk.png",
         wallpaper: "wallpapers/_prisoner/big/prisoner_1.jpg",
         accentColor: "#483f4d",
-        quote: "There is fine. I'd prefer we keep some distance until we've sorted this out.",
+        quote: "What an interesting development. Why don't you have a seat? The two of us should chat before you bury that thing in my heart.",
         audioFile: "audio/voices/princess_prisoner_1.flac",
         basementLayers: [
             { name: "Cell Wall", path: "backgrounds/ch2/prisoner/basement/farback prisoner basement p.png", depth: 0.03 },
             { name: "Iron Stocks", path: "backgrounds/ch2/prisoner/basement/bg prisoner basement p.png", depth: 0.07 }
         ],
         quotes: [
-            { text: "There is fine. I'd prefer we keep some distance until we've sorted this out.", audio: "audio/voices/princess_prisoner_1.flac" },
-            { text: "I've learned a lot of patience in my life, but that doesn't mean you should just stand around wasting everyone's time. Sit down.", audio: "audio/voices/princess_prisoner_2.flac" },
-            { text: "There isn't a keyhole in these shackles, and I don't see any keys in your hands, either.", audio: "audio/voices/princess_prisoner_3.flac" }
+            { text: "What an interesting development. Why don't you have a seat? The two of us should chat before you bury that thing in my heart.", audio: "audio/voices/princess_prisoner_1.flac" },
+            { text: "What an interesting development. Why don't you have a seat? I'm sure the two of us have quite a bit to talk about.", audio: "audio/voices/princess_prisoner_2.flac" }
         ]
     },
     {
@@ -206,19 +209,19 @@ var vessels = [
         chapter: 2,
         description: "Predatory, swift, and prowling in the darkness of the basement.",
         sprite: "sprites/ch2/beast_idle.png",
-        talkSprite: "sprites/ch2/beast_idle.png",
+        talkSprite: "sprites/ch2/beast_talk.png",
         wallpaper: "wallpapers/_beast/big/beast_1.jpg",
         accentColor: "#bb3e03",
-        quote: "Who's there?",
-        audioFile: "audio/voices/princess_who_there.flac",
+        quote: "I can smell you.",
+        audioFile: "audio/voices/princess_beast_1.flac",
         basementLayers: [
             { name: "Deep Burrow", path: "backgrounds/ch2/beast/basement/farback beast basement p.png", depth: 0.02 },
             { name: "Hunting Chamber", path: "backgrounds/ch2/beast/basement/bg beast basement p.png", depth: 0.06 },
             { name: "Undergrowth", path: "backgrounds/ch2/beast/basement/foreground beast basement p.png", depth: 0.10 }
         ],
         quotes: [
-            { text: "Who's there?", audio: "audio/voices/princess_who_there.flac" },
-            { text: "Don't be a stranger. It's been so long since I've had any visitors, come on down.", audio: "audio/voices/princess_come_down.flac" }
+            { text: "I can smell you.", audio: "audio/voices/princess_beast_1.flac" },
+            { text: "I'm so much more than you, and a little splinter clutched in trembling hands won't save you from me.", audio: "audio/voices/princess_beast_2.flac" }
         ]
     },
     {
@@ -228,7 +231,7 @@ var vessels = [
         chapter: 2,
         description: "A shifting multiplicity of all possible Princesses at once.",
         sprite: "sprites/ch2/stranger_idle.png",
-        talkSprite: "sprites/ch2/stranger_idle.png",
+        talkSprite: "sprites/ch2/stranger_talk.png",
         wallpaper: "wallpapers/_stranger/big/stranger_1.jpg",
         accentColor: "#9381ff",
         quote: "Are you okay?",
@@ -239,7 +242,9 @@ var vessels = [
         ],
         quotes: [
             { text: "Are you okay?", audio: "audio/voices/princess_stranger_1.flac" },
-            { text: "Are you just going to stand there?", audio: "audio/voices/princess_stranger_2.flac" }
+            { text: "Are you just going to stand there?", audio: "audio/voices/princess_stranger_2.flac" },
+            { text: "Can I help you?", audio: "audio/voices/princess_stranger_3.flac" },
+            { text: "That's okay. Sometimes I forget where I am too.", audio: "audio/voices/princess_stranger_4.flac" }
         ]
     },
     {

@@ -18,8 +18,8 @@ var rooms = [
         hasPrincess: false,
         layers: [
             { name: "Skyline", path: "backgrounds/ch1/cabin exterior/skyline cabin p.png", depth: 0.02 },
-            { name: "Midground Forest", path: "backgrounds/ch1/cabin exterior/midground cabin p.png", depth: 0.04 },
-            { name: "Cabin Plate", path: "backgrounds/ch1/cabin exterior/bg cabin p.png", depth: 0.06 },
+            { name: "Flanking Trees", path: "backgrounds/ch1/cabin exterior/bg cabin p.png", depth: 0.03 },
+            { name: "Cabin on Hill", path: "backgrounds/ch1/cabin exterior/midground cabin p.png", depth: 0.06 },
             { name: "Foreground Brush", path: "backgrounds/ch1/cabin exterior/foreground cabin p.png", depth: 0.10 }
         ]
     },

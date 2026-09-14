@@ -54,11 +54,11 @@ hl.config({
         border_size = 3,
         col = {
             active_border = {
-                colors = { "rgba(e8ddc5ee)", "rgba(801336cc)" },
+                colors = { "rgba(c72c41ee)", "rgba(2d2530ee)" },
                 angle = 45,
             },
             inactive_border = {
-                colors = { "rgba(2d2530cc)", "rgba(1a171fcc)" },
+                colors = { "rgba(2d2530aa)", "rgba(1a171faa)" },
                 angle = 45,
             },
         },
@@ -93,7 +93,6 @@ hl.curve("tension",   { type = "bezier", points = { { 0.2, 0.8 }, { 0.2, 1 } } }
 hl.animation({ leaf = "windows",     enabled = true, speed = 4, bezier = "sharpEase" })
 hl.animation({ leaf = "windowsOut",  enabled = true, speed = 4, bezier = "sharpEase", style = "popin 80%" })
 hl.animation({ leaf = "border",      enabled = true, speed = 4, bezier = "sharpEase" })
-hl.animation({ leaf = "borderangle", enabled = true, speed = 8, bezier = "sharpEase" })
 hl.animation({ leaf = "fade",        enabled = true, speed = 4, bezier = "tension" })
 hl.animation({ leaf = "workspaces",  enabled = true, speed = 4, bezier = "sharpEase", style = "slide" })
 
