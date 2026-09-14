@@ -47,7 +47,7 @@ Singleton {
         }
         var track = playlist[currentIndex];
         if (!track) return;
-        var fullPath = "/home/arch/slaytheland/assets/" + track.file;
+        var fullPath = Theme.assetPath(track.file);
         playerProc.command = ["pw-play", "--volume", "" + root.volume, fullPath];
         playerProc.running = true;
         root.isPlaying = true;

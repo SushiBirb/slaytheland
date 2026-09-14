@@ -47,6 +47,8 @@ Item {
                 radius: Theme.radiusSmall
                 color: bladeMouse.containsMouse ? Theme.bloodDried : Theme.surfaceAlt
                 border.color: bladeMouse.containsMouse ? Theme.crimson : Theme.graphiteMuted
+                scale: bladeMouse.pressed ? 0.93 : (bladeMouse.containsMouse ? 1.04 : 1.0)
+                Behavior on scale { NumberAnimation { duration: 100; easing.type: Easing.OutQuad } }
 
                 GlyphIcon {
                     anchors.centerIn: parent
@@ -84,12 +86,14 @@ Item {
                         property int wsId: index + 1
                         property bool isActive: Workspaces.activeId === wsId
 
-                        width: 28
-                        height: 28
+                        width: 30
+                        height: 30
                         radius: Theme.radiusSmall
                         color: isActive ? Theme.accent : (wsMouse.containsMouse ? Theme.surfaceHover : "transparent")
                         border.color: isActive ? Theme.accent : Theme.graphiteMuted
                         border.width: isActive ? 2 : 1
+                        scale: wsMouse.pressed ? 0.92 : (wsMouse.containsMouse ? 1.05 : 1.0)
+                        Behavior on scale { NumberAnimation { duration: 100; easing.type: Easing.OutQuad } }
 
                         Text {
                             anchors.centerIn: parent
@@ -159,6 +163,8 @@ Item {
                 radius: Theme.radiusSmall
                 color: vesselMouse.containsMouse ? Theme.surfaceHover : Theme.surfaceAlt
                 border.color: Theme.bloodDried
+                scale: vesselMouse.pressed ? 0.95 : (vesselMouse.containsMouse ? 1.02 : 1.0)
+                Behavior on scale { NumberAnimation { duration: 100; easing.type: Easing.OutQuad } }
 
                 Row {
                     anchors.centerIn: parent
@@ -201,6 +207,8 @@ Item {
                 radius: Theme.radiusSmall
                 color: VoiceBus.voiceMuted ? Theme.bloodDried : Theme.surfaceAlt
                 border.color: Theme.graphiteMuted
+                scale: voiceMouse.pressed ? 0.92 : (voiceMouse.containsMouse ? 1.05 : 1.0)
+                Behavior on scale { NumberAnimation { duration: 100; easing.type: Easing.OutQuad } }
 
                 GlyphIcon {
                     anchors.centerIn: parent
@@ -211,7 +219,9 @@ Item {
                 }
 
                 MouseArea {
+                    id: voiceMouse
                     anchors.fill: parent
+                    hoverEnabled: true
                     cursorShape: Qt.PointingHandCursor
                     onClicked: {
                         VoiceBus.voiceMuted = !VoiceBus.voiceMuted;
@@ -227,6 +237,8 @@ Item {
                 radius: Theme.radiusSmall
                 color: Theme.surfaceAlt
                 border.color: Theme.graphiteMuted
+                scale: volMouse.pressed ? 0.95 : (volMouse.containsMouse ? 1.02 : 1.0)
+                Behavior on scale { NumberAnimation { duration: 100; easing.type: Easing.OutQuad } }
 
                 Row {
                     anchors.centerIn: parent
@@ -251,7 +263,9 @@ Item {
                 }
 
                 MouseArea {
+                    id: volMouse
                     anchors.fill: parent
+                    hoverEnabled: true
                     cursorShape: Qt.PointingHandCursor
                     onClicked: {
                         Sfx.playGlass();
@@ -331,6 +345,8 @@ Item {
                 radius: Theme.radiusSmall
                 color: qsMouse.containsMouse ? Theme.surfaceHover : Theme.surfaceAlt
                 border.color: qsMouse.containsMouse ? Theme.crimson : Theme.graphiteMuted
+                scale: qsMouse.pressed ? 0.93 : (qsMouse.containsMouse ? 1.05 : 1.0)
+                Behavior on scale { NumberAnimation { duration: 100; easing.type: Easing.OutQuad } }
 
                 GlyphIcon {
                     anchors.centerIn: parent

@@ -15,7 +15,7 @@ Singleton {
 
     function playFile(relPath) {
         if (!root.enabled) return;
-        var fullPath = "/home/arch/slaytheland/assets/" + relPath;
+        var fullPath = Theme.assetPath(relPath);
         proc.command = ["pw-play", "--volume", "" + root.volume, fullPath];
         proc.running = true;
     }

@@ -59,10 +59,9 @@ Singleton {
     }
 
     function applyScreenShader() {
-        var home = Quickshell.env("HOME") || "/home/arch";
-        var scriptPath = home + "/slaytheland/scripts/set-shader-intensity.sh";
         var val = root.shaderEnabled ? root.shaderIntensity.toFixed(2) : "0.0";
-        Quickshell.execDetached(["bash", scriptPath, val]);
+        var cmd = "for p in \"$HOME/slaytheland/scripts/set-shader-intensity.sh\" \"$HOME/Projects/slaytheland/scripts/set-shader-intensity.sh\" \"/home/arch/slaytheland/scripts/set-shader-intensity.sh\"; do if [ -f \"$p\" ]; then exec \"$p\" " + val + "; fi; done";
+        Quickshell.execDetached(["bash", "-c", cmd]);
     }
 
     onShaderEnabledChanged: {

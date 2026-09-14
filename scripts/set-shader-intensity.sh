@@ -8,6 +8,12 @@ set -euo pipefail
 
 INTENSITY="${1:-0.5}"
 
+# Security validation: Ensure intensity is strictly a numeric float to prevent injection
+if ! [[ "$INTENSITY" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+    echo "Error: Invalid intensity value '$INTENSITY'. Must be a numeric float between 0.0 and 1.0." >&2
+    exit 1
+fi
+
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
 # If intensity is near zero, disable the screen shader

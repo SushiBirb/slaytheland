@@ -74,8 +74,7 @@ Item {
         } else if (cmd === ":talk") {
             VoiceBus.triggerRandomQuote();
         } else if (cmd === ":wall") {
-            execProc.command = ["/home/arch/slaytheland/scripts/wall-cycle.sh"];
-            execProc.running = true;
+            Quickshell.execDetached(["bash", "-c", "for p in \"$HOME/slaytheland/scripts/wall-cycle.sh\" \"$HOME/Projects/slaytheland/scripts/wall-cycle.sh\" \"/home/arch/slaytheland/scripts/wall-cycle.sh\"; do if [ -f \"$p\" ]; then exec \"$p\"; fi; done"]);
         } else if (cmd.indexOf(":room ") === 0) {
             var rId = cmd.substring(6).trim();
             RoomState.setRoom(rId);
@@ -83,8 +82,12 @@ Item {
             var vId = cmd.substring(8).trim();
             RoomState.setVessel(vId);
         } else {
-            execProc.command = ["sh", "-c", cmd + " &"];
-            execProc.running = true;
+            var safeCmd = cmd.trim();
+            if (/^[a-zA-Z0-9_\-\.\/\s]+$/.test(safeCmd)) {
+                Quickshell.execDetached(["sh", "-c", safeCmd + " &"]);
+            } else {
+                console.log("Blocked potentially unsafe launcher command:", safeCmd);
+            }
         }
     }
 

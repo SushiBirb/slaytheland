@@ -87,12 +87,13 @@ Item {
     visible: opacity > 0.0
     Behavior on opacity { NumberAnimation { duration: 250 } }
 
-    // Textbox Background Container
+    // Textbox Background Container (Framed and centered for authentic visual novel framing)
     Item {
         id: textboxContainer
-        anchors.left: parent.left
-        anchors.right: parent.right
+        anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
+        anchors.bottomMargin: 36
+        width: Math.min(940, parent.width - 48)
         height: 170
 
         // Authentic dark backing + vignette
@@ -157,7 +158,8 @@ Item {
     // Speaker Namebox (Sits above textboxContainer, unclipped)
     Item {
         id: nameboxContainer
-        x: 28
+        anchors.left: textboxContainer.left
+        anchors.leftMargin: 24
         anchors.bottom: textboxContainer.top
         anchors.bottomMargin: -6
         width: Math.max(160, nameText.implicitWidth + 40)

@@ -21,10 +21,10 @@ ShellRoot {
     id: root
 
     // === Typography: Auto-load Slay the Princess fonts ===
-    FontLoader { id: fontAmatic; source: "file:///home/arch/slaytheland/assets/fonts/AmaticSC-Regular.ttf" }
-    FontLoader { id: fontAmaticBold; source: "file:///home/arch/slaytheland/assets/fonts/AmaticSC-Bold.ttf" }
-    FontLoader { id: fontKelmscott; source: "file:///home/arch/slaytheland/assets/fonts/KelmscottRomanNF.ttf" }
-    FontLoader { id: fontDokdo; source: "file:///home/arch/slaytheland/assets/fonts/EastSeaDokdo-Regular.ttf" }
+    FontLoader { id: fontAmatic; source: Theme.asset("fonts/AmaticSC-Regular.ttf") }
+    FontLoader { id: fontAmaticBold; source: Theme.asset("fonts/AmaticSC-Bold.ttf") }
+    FontLoader { id: fontKelmscott; source: Theme.asset("fonts/KelmscottRomanNF.ttf") }
+    FontLoader { id: fontDokdo; source: Theme.asset("fonts/EastSeaDokdo-Regular.ttf") }
 
     // === Global Shortcuts (Dispatched from Hyprland) ===
     GlobalShortcut {

@@ -49,4 +49,12 @@ Singleton {
         }
         return Qt.resolvedUrl("assets/" + relPath);
     }
+
+    // === Local Filesystem Path Resolver (for external CLI tools like pw-play) ===
+    function assetPath(relPath) {
+        if (!relPath || relPath === "") return "";
+        var u = asset(relPath).toString();
+        return u.replace(/^file:\/\//, "");
+    }
 }
+
